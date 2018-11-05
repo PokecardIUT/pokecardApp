@@ -1,7 +1,9 @@
-package com.example.lpiem.pokecardapp;
+package com.example.lpiem.pokecardapp.presentation.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.lpiem.pokecardapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
