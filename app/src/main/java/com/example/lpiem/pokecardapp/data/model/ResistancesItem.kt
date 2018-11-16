@@ -2,7 +2,7 @@ package com.example.lpiem.pokecardapp.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class WeaknessesItem(
+data class ResistancesItem(
 
 	@field:SerializedName("type")
 	val type: String? = null,

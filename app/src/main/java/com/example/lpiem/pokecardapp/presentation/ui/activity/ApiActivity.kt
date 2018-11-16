@@ -3,7 +3,6 @@ package com.example.lpiem.pokecardapp.presentation.ui.activity
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
-import android.net.NetworkInfo
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,7 +10,7 @@ import android.view.View
 import android.widget.TextView
 
 import com.example.lpiem.pokecardapp.R
-import com.example.lpiem.pokecardapp.data.manager.api.GithubServiceImpl
+import com.example.lpiem.pokecardapp.data.manager.api.PokemonTCGApiImpl
 
 class ApiActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var tvCard: TextView
@@ -43,8 +42,7 @@ class ApiActivity : AppCompatActivity(), View.OnClickListener {
         }
         if (isOnline) {
             Log.d("commMgr", "Network connected")
-            GithubServiceImpl().getGithubUsername("ahmedrizwan")
-                    .subscribe { userInfo -> tvCard.text = userInfo }
+            PokemonTCGApiImpl().getRxCardName("ex1-1").subscribe { card -> tvCard.text = card }
         }
     }
 

@@ -2,94 +2,68 @@ package com.example.lpiem.pokecardapp.data.model
 
 import com.google.gson.annotations.SerializedName
 
-class Card {
+data class Card(
 
-    @SerializedName("types")
-    var types: List<String>? = null
+	@field:SerializedName("types")
+	val types: List<String?>? = null,
 
-    @SerializedName("supertype")
-    var supertype: String? = null
+	@field:SerializedName("supertype")
+	val supertype: String? = null,
 
-    @SerializedName("retreatCost")
-    var retreatCost: List<String>? = null
+	@field:SerializedName("retreatCost")
+	val retreatCost: List<String?>? = null,
 
-    @SerializedName("set")
-    var set: String? = null
+	@field:SerializedName("set")
+	val set: String? = null,
 
-    @SerializedName("artist")
-    var artist: String? = null
+	@field:SerializedName("artist")
+	val artist: String? = null,
 
-    @SerializedName("setCode")
-    var setCode: String? = null
+	@field:SerializedName("setCode")
+	val setCode: String? = null,
 
-    @SerializedName("hp")
-    var hp: String? = null
+	@field:SerializedName("hp")
+	val hp: String? = null,
 
-    @SerializedName("convertedRetreatCost")
-    var convertedRetreatCost: Int = 0
+	@field:SerializedName("convertedRetreatCost")
+	val convertedRetreatCost: Int? = null,
 
-    @SerializedName("resistances")
-    var resistances: List<Any>? = null
+	@field:SerializedName("resistances")
+	val resistances: List<ResistancesItem?>? = null,
 
-    @SerializedName("number")
-    var number: String? = null
+	@field:SerializedName("evolvesFrom")
+	val evolvesFrom: String? = null,
 
-    @SerializedName("subtype")
-    var subtype: String? = null
+	@field:SerializedName("number")
+	val number: String? = null,
 
-    @SerializedName("attacks")
-    var attacks: List<AttacksItem>? = null
+	@field:SerializedName("subtype")
+	val subtype: String? = null,
 
-    @SerializedName("nationalPokedexNumber")
-    var nationalPokedexNumber: Int = 0
+	@field:SerializedName("attacks")
+	val attacks: List<AttacksItem?>? = null,
 
-    @SerializedName("imageUrl")
-    var imageUrl: String? = null
+	@field:SerializedName("nationalPokedexNumber")
+	val nationalPokedexNumber: Int? = null,
 
-    @SerializedName("weaknesses")
-    var weaknesses: List<WeaknessesItem>? = null
+	@field:SerializedName("series")
+	val series: String? = null,
 
-    @SerializedName("name")
-    var name: String? = null
+	@field:SerializedName("imageUrl")
+	val imageUrl: String? = null,
 
-    @SerializedName("imageUrlHiRes")
-    var imageUrlHiRes: String? = null
+	@field:SerializedName("weaknesses")
+	val weaknesses: List<WeaknessesItem?>? = null,
 
-    @SerializedName("id")
-    var id: String? = null
+	@field:SerializedName("name")
+	val name: String? = null,
 
-    @SerializedName("text")
-    var text: List<String>? = null
+	@field:SerializedName("imageUrlHiRes")
+	val imageUrlHiRes: String? = null,
 
-    @SerializedName("ability")
-    var ability: Ability? = null
+	@field:SerializedName("id")
+	val id: String? = null,
 
-    @SerializedName("rarity")
-    var rarity: String? = null
-
-    override fun toString(): String {
-        return "Card{" +
-                "types = '" + types + '\''.toString() +
-                ",supertype = '" + supertype + '\''.toString() +
-                ",retreatCost = '" + retreatCost + '\''.toString() +
-                ",set = '" + set + '\''.toString() +
-                ",artist = '" + artist + '\''.toString() +
-                ",setCode = '" + setCode + '\''.toString() +
-                ",hp = '" + hp + '\''.toString() +
-                ",convertedRetreatCost = '" + convertedRetreatCost + '\''.toString() +
-                ",resistances = '" + resistances + '\''.toString() +
-                ",number = '" + number + '\''.toString() +
-                ",subtype = '" + subtype + '\''.toString() +
-                ",attacks = '" + attacks + '\''.toString() +
-                ",nationalPokedexNumber = '" + nationalPokedexNumber + '\''.toString() +
-                ",imageUrl = '" + imageUrl + '\''.toString() +
-                ",weaknesses = '" + weaknesses + '\''.toString() +
-                ",name = '" + name + '\''.toString() +
-                ",imageUrlHiRes = '" + imageUrlHiRes + '\''.toString() +
-                ",id = '" + id + '\''.toString() +
-                ",text = '" + text + '\''.toString() +
-                ",ability = '" + ability + '\''.toString() +
-                ",rarity = '" + rarity + '\''.toString() +
-                "}"
-    }
-}
+	@field:SerializedName("rarity")
+	val rarity: String? = null
+)

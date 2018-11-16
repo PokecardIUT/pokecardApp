@@ -7,8 +7,8 @@ import rx.Observable
 import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
-class PokemonTCGService {
-    private val pokemonTCGClient: PokemonTCGClient
+class PokemonTCGApiImpl {
+    private val pokemonTCGClient: PokemonTCGApi
 
     init {
         val retrofit = Retrofit.Builder()
@@ -17,13 +17,13 @@ class PokemonTCGService {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
-        pokemonTCGClient = retrofit.create(PokemonTCGClient::class.java!!)
+        pokemonTCGClient = retrofit.create(PokemonTCGApi::class.java)
     }
 
     fun getRxCardName(id: String): Observable<String> {
         return pokemonTCGClient.getCard(id)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .map { card -> "Card: " + card.name }
+                .map { pokemon -> "Card: " + pokemon.card?.name }
     }
 }
