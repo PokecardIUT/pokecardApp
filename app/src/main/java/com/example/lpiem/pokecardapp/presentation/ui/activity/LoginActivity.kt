@@ -1,6 +1,5 @@
 package com.example.lpiem.pokecardapp.presentation.ui.activity
 
-import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -14,7 +13,6 @@ import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.GraphRequest
-import com.facebook.GraphResponse
 import com.facebook.login.LoginManager
 import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
@@ -24,14 +22,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 
 import com.facebook.FacebookSdk
 import com.facebook.appevents.AppEventsLogger
 
 import org.json.JSONException
-import org.json.JSONObject
 
 import java.util.Arrays
 
@@ -172,7 +168,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun gotoApiActivity(name: String?, email: String?) {
-        val SignInIntent = Intent(this@LoginActivity, ApiActivity::class.java)
+        val SignInIntent = Intent(this@LoginActivity, DeckListActivity::class.java)
         SignInIntent.putExtra("name", name)
         SignInIntent.putExtra("email", email)
         startActivityForResult(SignInIntent, SIGN_IN_GOOGLE)

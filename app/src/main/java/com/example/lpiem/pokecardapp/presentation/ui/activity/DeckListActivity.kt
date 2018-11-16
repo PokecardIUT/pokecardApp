@@ -5,14 +5,19 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
+import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.widget.TextView
 
 import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.data.manager.api.PokemonTCGApiImpl
+import com.example.lpiem.pokecardapp.data.model.Deck.Deck
+import com.example.lpiem.pokecardapp.presentation.ui.adapter.DeckListAdapter
+import kotlinx.android.synthetic.main.activity_deck_list.*
 
-class ApiActivity : AppCompatActivity(), View.OnClickListener {
+class DeckListActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var tvCard: TextView
     lateinit var tvName: TextView
     lateinit var tvEmail: TextView
@@ -26,11 +31,15 @@ class ApiActivity : AppCompatActivity(), View.OnClickListener {
             return networkInfo != null && networkInfo.isConnected
         }
 
+    override fun onCreateView(name: String?, context: Context?, attrs: AttributeSet?): View? {
+        return super.onCreateView(name, context, attrs)
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.test_get_card)
+        setContentView(R.layout.activity_deck_list)
 
-        tvCard = findViewById(R.id.tvCard)
         tvName = findViewById(R.id.tvName)
         tvEmail = findViewById(R.id.tvEmail)
         findViewById<View>(R.id.btSignOut).setOnClickListener(this)
@@ -42,7 +51,12 @@ class ApiActivity : AppCompatActivity(), View.OnClickListener {
         }
         if (isOnline) {
             Log.d("commMgr", "Network connected")
-            PokemonTCGApiImpl().getRxCardName("ex1-1").subscribe { card -> tvCard.text = card }
+            PokemonTCGApiImpl().getDecks().subscribe { listDeck ->
+                Log.d("fzef", "test")
+                recyclerView.layoutManager = LinearLayoutManager(this)
+                recyclerView.adapter = DeckListAdapter(listDeck, this)
+                Log.d("fzef", listDeck.toString())
+            }
         }
     }
 

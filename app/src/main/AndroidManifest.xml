@@ -27,6 +27,6 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.ui.activity.ApiActivity"></activity>
+        <activity android:name=".presentation.ui.activity.DeckListActivity"></activity>
     </application>
 </manifest>
