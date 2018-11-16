@@ -35,12 +35,6 @@ class PokemonTCGApiImpl {
         pokemonTCGClient = retrofit.create(PokemonTCGApi::class.java)
     }
 
-    fun getRxCardName(id: String): Observable<String> {
-        return pokemonTCGClient.getCard(id)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .map { pokemon -> "Card: " + pokemon.card?.name }
-    }
 
     fun getDecks(): Observable<List<SetsItem?>> {
         return pokemonTCGClient.getDecks()

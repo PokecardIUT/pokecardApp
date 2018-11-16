@@ -90,7 +90,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 ) { `object`, response ->
                     Log.v("LoginActivity", response.toString())
 
-                    // Application code
+                    // PokeApplication code
                     try {
                         val email = `object`.getString("email")
                         var name = `object`.getString("name")
