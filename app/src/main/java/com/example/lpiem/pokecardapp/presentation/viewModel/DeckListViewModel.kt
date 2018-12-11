@@ -17,4 +17,6 @@ class DeckListViewModel(var view:DeckListCallback) {
         }
 
     }
+
+    fun isLoggedFb(): Boolean = repo.isLoggedFb()
 }

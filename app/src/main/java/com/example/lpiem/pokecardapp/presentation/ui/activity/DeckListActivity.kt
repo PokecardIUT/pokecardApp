@@ -13,6 +13,8 @@ import com.example.lpiem.pokecardapp.data.model.Deck.SetsItem
 import com.example.lpiem.pokecardapp.presentation.ui.adapter.DeckListAdapter
 import com.example.lpiem.pokecardapp.presentation.ui.view.DeckListCallback
 import com.example.lpiem.pokecardapp.presentation.viewModel.DeckListViewModel
+import com.facebook.AccessToken
+import com.facebook.login.LoginManager
 import kotlinx.android.synthetic.main.activity_deck_list.*
 
 class DeckListActivity : AppCompatActivity(), View.OnClickListener, DeckListCallback {
@@ -34,7 +36,7 @@ class DeckListActivity : AppCompatActivity(), View.OnClickListener, DeckListCall
         setContentView(R.layout.activity_deck_list)
 
         findViewById<View>(R.id.btSignOut).setOnClickListener(this)
-/*
+
         name = intent.getStringExtra("name")
         email = intent.getStringExtra("email")
 
@@ -42,7 +44,7 @@ class DeckListActivity : AppCompatActivity(), View.OnClickListener, DeckListCall
             tvName.text = "$name,"
             tvEmail.text = email
         }
-*/
+
 
         if (isOnline) {
             viewModel.getDecks()
@@ -56,6 +58,10 @@ class DeckListActivity : AppCompatActivity(), View.OnClickListener, DeckListCall
     override fun onClick(v: View) {
         when (v.id) {
             R.id.btSignOut -> {
+                if (viewModel.isLoggedFb()) {
+                    AccessToken.setCurrentAccessToken(null)
+                    LoginManager.getInstance().logOut()
+                }
                 startActivityForResult(Intent(this, LoginActivity::class.java), SIGN_OUT)
             }
         }
