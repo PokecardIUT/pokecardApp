@@ -1,5 +1,6 @@
 package com.example.lpiem.pokecardapp.presentation.ui.activity
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -8,7 +9,9 @@ import android.view.View
 import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.presentation.ui.view.LoginCallback
 import com.example.lpiem.pokecardapp.presentation.viewModel.LoginViewModel
+import com.facebook.FacebookSdk
 import kotlinx.android.synthetic.main.activity_connection.*
+import java.util.*
 
 /*TODO Archi mvvm, button facebook and google, delete onActivityResult ?
   TODO Rename var of button in layout and ui...
@@ -18,6 +21,8 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
 
 
     val viewModel: LoginViewModel = LoginViewModel(this)
+    val RC_SIGN_IN_FB = 1916
+
 
     /*
     private var callbackManager: CallbackManager? = null
@@ -46,10 +51,21 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
            }
        }
    */
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        viewModel.callbackManager.onActivityResult(requestCode, resultCode, data)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_connection)
+
+        FacebookSdk.sdkInitialize(this)
+
         buttonConnectWithEmail.setOnClickListener(this)
+        buttonConnectionWithFb.setReadPermissions("public_profile", "email")
+        buttonConnectionWithFb.setOnClickListener(this)
 
         /*
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -121,6 +137,9 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
             R.id.buttonConnectWithEmail -> {
                viewModel.connexionWithEmail(usernameField.text.toString(),passwordField.text.toString())
             }
+            R.id.buttonConnectionWithFb -> {
+                viewModel.connectionWithFb()
+            }
         }
 
     }
@@ -135,6 +154,9 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
         startActivity(deckListActivityIntent)
 
     }
+
+    override fun getContext(): Context = this
+
 
 
 /*
