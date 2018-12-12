@@ -1,69 +1,60 @@
 package com.example.lpiem.pokecardapp.presentation.ui.activity
 
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.view.Window
 import android.widget.Toast
 
 import com.example.lpiem.pokecardapp.R
-import com.facebook.AccessToken
-import com.facebook.CallbackManager
-import com.facebook.FacebookCallback
-import com.facebook.FacebookException
-import com.facebook.GraphRequest
-import com.facebook.login.LoginManager
-import com.facebook.login.LoginResult
-import com.facebook.login.widget.LoginButton
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.SignInButton
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
+import com.example.lpiem.pokecardapp.presentation.ui.view.LoginCallback
+import com.example.lpiem.pokecardapp.presentation.viewModel.LoginViewModel
+import kotlinx.android.synthetic.main.activity_connection.*
 
-import com.facebook.FacebookSdk
-import com.facebook.appevents.AppEventsLogger
+/*TODO Archi mvvm, button facebook and google, delete onActivityResult ?
+  TODO Rename var of button in layout and ui...
+*/
 
-import org.json.JSONException
+class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
 
-import java.util.Arrays
 
-class LoginActivity : AppCompatActivity(), View.OnClickListener {
+    val viewModel: LoginViewModel = LoginViewModel(this)
 
+    /*
     private var callbackManager: CallbackManager? = null
     private var mGoogleSignInClient: GoogleSignInClient? = null
     private var loginButton: LoginButton? = null
-
-    public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
-            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            handleSignInResult(task)
-        } else if (requestCode == SIGN_OUT) {
-            val accessToken = AccessToken.getCurrentAccessToken()
-            val isLoggedIn = accessToken != null && !accessToken.isExpired
-            if (isLoggedIn) {
-                AccessToken.setCurrentAccessToken(null)
-                LoginManager.getInstance().logOut()
-            }
-            signOut()
-        } else {
-            callbackManager!!.onActivityResult(requestCode, resultCode, data)
-        }
-    }
-
+*/
+    /*   public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+           super.onActivityResult(requestCode, resultCode, data)
+           Log.d("mlk","2")
+           // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+           if (requestCode == BUTTON_GOOGLE) {
+               // The Task returned from this call is always completed, no need to attach
+               // a listener.
+               val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+               handleSignInResult(task)
+           } else if (requestCode == SIGN_OUT) {
+               val accessToken = AccessToken.getCurrentAccessToken()
+               val isLoggedIn = accessToken != null && !accessToken.isExpired
+               if (isLoggedIn) {
+                   AccessToken.setCurrentAccessToken(null)
+                   LoginManager.getInstance().logOut()
+               }
+               signOut()
+           } else {
+               callbackManager!!.onActivityResult(requestCode, resultCode, data)
+           }
+       }
+   */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_connection)
+        buttonConnectWithEmail.setOnClickListener(this)
 
+        /*
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build()
@@ -115,29 +106,45 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             override fun onError(exception: FacebookException) {
                 // App code
             }
-        })
+        })*/
     }
 
     override fun onResume() {
         super.onResume()
 
-        val acct = GoogleSignIn.getLastSignedInAccount(this)
-        if (acct != null) {
-            val personEmail = acct.email
-            val personName = acct.givenName
-        }
+        /* val acct = GoogleSignIn.getLastSignedInAccount(this)
+         if (acct != null) {
+             val personEmail = acct.email
+             val personName = acct.givenName
+         }*/
     }
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.sign_in_button -> signIn()
+            R.id.buttonConnectWithEmail -> {
+               viewModel.connexionWithEmail(usernameField.text.toString(),passwordField.text.toString())
+            }
         }
 
     }
 
+    override fun showError(message: String) {
+       Log.d("ConnexionEmail", "Error")
+    }
+
+    override fun goToDeckListActivity() {
+        //TODO Ajoute du navigator
+        val deckListActivityIntent = Intent(this, DeckListActivity::class.java)
+        startActivity(deckListActivityIntent)
+
+    }
+
+
+/*
     private fun signIn() {
-        val signInIntent = mGoogleSignInClient!!.signInIntent
-        startActivityForResult(signInIntent, RC_SIGN_IN)
+        Log.d("mlk", "1")
+        val signInIntent = mGoogleSignInClient?.signInIntent
+        startActivityForResult(signInIntent, BUTTON_GOOGLE)
     }
 
     fun signOut() {
@@ -152,7 +159,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
         try {
-            val account = completedTask.getResult<ApiException>(ApiException::class.java!!)
+            val account = completedTask.getResult<ApiException>(ApiException::class.java)
             val personEmail = account!!.email
             val personName = account.givenName
 
@@ -169,19 +176,19 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun gotoApiActivity(name: String?, email: String?) {
-        val SignInIntent = Intent(this@LoginActivity, DeckListActivity::class.java)
-        SignInIntent.putExtra("name", name)
-        SignInIntent.putExtra("email", email)
-        startActivityForResult(SignInIntent, SIGN_IN_GOOGLE)
+        val signInIntent = Intent(this@LoginActivity, DeckListActivity::class.java)
+        signInIntent.putExtra("name", name)
+        signInIntent.putExtra("email", email)
+        startActivityForResult(signInIntent, SIGN_IN_GOOGLE)
     }
 
     companion object {
 
-        private val RC_SIGN_IN = 9001
+        private val BUTTON_GOOGLE = 9001
         private val SIGN_IN_FB = 9002
         private val SIGN_IN_GOOGLE = 9003
         private val SIGN_OUT = 8000
         private val TAG = "MainActivity"
-    }
+    }*/
 
 }
