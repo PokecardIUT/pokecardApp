@@ -2,10 +2,13 @@ package com.example.lpiem.pokecardapp.presentation.ui.activity
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.ConnectivityManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.View
 
 import com.example.lpiem.pokecardapp.R
@@ -51,6 +54,9 @@ class DeckListActivity : AppCompatActivity(), View.OnClickListener, DeckListCall
             recyclerView.adapter = adapter
 
         }
+
+        var sharedPreferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        Log.d("tokenEmail2", sharedPreferences.getString("token", "not defined"))
     }
 
     override fun onClick(v: View) {
