@@ -13,10 +13,10 @@
         android:layout_marginStart="53dp"
         android:layout_marginEnd="54dp"
         android:text="Email :"
-        app:layout_constraintBottom_toBottomOf="@+id/editEmail"
-        app:layout_constraintEnd_toStartOf="@+id/connectButton"
+        app:layout_constraintBottom_toBottomOf="@+id/usernameField"
+        app:layout_constraintEnd_toStartOf="@+id/buttonConnectWithEmail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editEmail" />
+        app:layout_constraintTop_toTopOf="@+id/usernameField" />
 
     <TextView
         android:id="@+id/passwordTv"
@@ -24,11 +24,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="31dp"
         android:text="Password :"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editPassword"
-        app:layout_constraintEnd_toStartOf="@+id/editPassword" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/passwordField"
+        app:layout_constraintEnd_toStartOf="@+id/passwordField" />
 
     <EditText
-        android:id="@+id/editEmail"
+        android:id="@+id/usernameField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
@@ -36,12 +36,12 @@
         android:layout_marginBottom="54dp"
         android:ems="10"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/editPassword"
+        app:layout_constraintBottom_toTopOf="@+id/passwordField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editPassword"
+        android:id="@+id/passwordField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="152dp"
@@ -52,7 +52,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/connectButton"
+        android:id="@+id/buttonConnectWithEmail"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
         android:text="Connect"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordField" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"

@@ -34,7 +34,7 @@ class DeckListActivity : AppCompatActivity(), View.OnClickListener, DeckListCall
         setContentView(R.layout.activity_deck_list)
 
         findViewById<View>(R.id.btSignOut).setOnClickListener(this)
-
+/*
         name = intent.getStringExtra("name")
         email = intent.getStringExtra("email")
 
@@ -42,7 +42,7 @@ class DeckListActivity : AppCompatActivity(), View.OnClickListener, DeckListCall
             tvName.text = "$name,"
             tvEmail.text = email
         }
-
+*/
 
         if (isOnline) {
             viewModel.getDecks()
