@@ -12,6 +12,13 @@ import com.example.lpiem.pokecardapp.presentation.viewModel.LoginViewModel
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import kotlinx.android.synthetic.main.activity_connection.*
+import com.google.android.gms.common.util.IOUtils.toByteArray
+import android.content.pm.PackageManager
+import android.content.pm.PackageInfo
+import android.util.Base64
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
+
 
 /*TODO Archi mvvm, button facebook and google, delete onActivityResult ?
   TODO Rename var of button in layout and ui...
@@ -64,6 +71,7 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
             viewModel.getInfoFb(AccessToken.getCurrentAccessToken())
 
         }
+
 
         /*
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
