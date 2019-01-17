@@ -31,6 +31,6 @@ class DeckListActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        finishAffinity()
+    //    finishAffinity()
     }
 }

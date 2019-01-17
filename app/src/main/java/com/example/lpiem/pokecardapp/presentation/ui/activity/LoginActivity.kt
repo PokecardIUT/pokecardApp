@@ -142,7 +142,7 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             R.id.buttonConnectWithEmail -> {
-                viewModel.connexionWithEmail(usernameField.text.toString(), passwordField.text.toString())
+                viewModel.connexionWithEmail(usernameField.editText?.text.toString(), passwordField.editText?.text.toString())
             }
             R.id.buttonConnectionWithFb -> {
                 viewModel.connectionWithFb(callbackManager, buttonConnectionWithFb)
