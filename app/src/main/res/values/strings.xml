@@ -6,4 +6,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="adapter_sets_list_title">Sets title</string>
+    <string name="adapter_sets_list_description">Description</string>
+    <string name="adapter_sets_list_realese_date">Realese date</string>
+    <string name="adapter_sets_list_number_card">Nb card</string>
+    <string name="adapter_sets_list_imageview">Sets image</string>
 </resources>
