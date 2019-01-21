@@ -11,7 +11,6 @@ class SetsListPresenter(var view: SetsListCallback) {
     var listDeck: List<SetsItem?> = ArrayList<SetsItem?>()
     fun getDecks(){
         repo.getDecks().subscribe {
-            Log.d("mlk", "sub")
             listDeck = it
             view.updateList(it)
         }

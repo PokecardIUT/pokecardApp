@@ -20,21 +20,16 @@ class SetsListViewHolder(var v: View): RecyclerView.ViewHolder(v) {
 
     fun bindSet(set: SetsItem, onSetClick: ((SetsItem)->Unit)?){
 
-
-
-
-        //Glide.with(v).load(set.logoUrl).into(setsImageView)
         setsTitle.text = set.name
         setsDescription.text = set.series
         setsReleaseDate.text = set.releaseDate
         setsNumberCard.text = set.totalCards.toString()
         Picasso.get().load(set.logoUrl).into(setsImageView)
-        Log.d("mlk", "holder")
-       /* itemView.setOnClickListener{
+        itemView.setOnClickListener{
             onSetClick?.let {
                 it(set)
             }
-        }*/
+        }
 
     }
 
