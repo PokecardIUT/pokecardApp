@@ -11,17 +11,18 @@ import android.widget.TextView
 import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.data.model.Deck.Deck
 import com.example.lpiem.pokecardapp.data.model.Deck.SetsItem
+import com.example.lpiem.pokecardapp.presentation.ui.viewholder.DeckListViewHolder
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.adapter_deck_list.view.*
 
-class DeckListAdapter(var items : List<SetsItem?>, val context: Context) : androidx.recyclerview.widget.RecyclerView.Adapter<ViewHolder>() {
+class DeckListAdapter(var items : List<SetsItem?>, val context: Context) : RecyclerView.Adapter<DeckListViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.adapter_deck_list, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeckListViewHolder {
+        return DeckListViewHolder(LayoutInflater.from(context).inflate(R.layout.adapter_deck_list, parent, false))
     }
 
     @SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DeckListViewHolder, position: Int) {
         holder.tvName.text = items.get(position)?.name
         holder.tvSerie.text = items.get(position)?.series
         holder.tvRelease.text = "Released on "+items.get(position)?.releaseDate
@@ -36,11 +37,3 @@ class DeckListAdapter(var items : List<SetsItem?>, val context: Context) : andro
 }
 
 
-class ViewHolder (view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
-    val tvName: TextView =  view.tvName
-    val tvSerie: TextView =  view.tvSerie
-    val tvRelease: TextView =  view.tvRelease
-    val tvTotal: TextView =  view.tvTotal
-    val imageView: ImageView =  view.imageView
-
-}

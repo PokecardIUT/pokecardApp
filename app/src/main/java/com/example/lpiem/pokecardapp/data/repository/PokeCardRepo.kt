@@ -15,7 +15,7 @@ class PokeCardRepo{
     var pokeCardApi = PokeCardApiImpl()
     var facebookApi = FacebookApiImpl()
 
-    fun getDecks(): Observable<List<SetsItem?>> {
+    fun getDecks(): Observable<List<SetsItem>> {
         return pokemonTCGApi.getDecks()
     }
 

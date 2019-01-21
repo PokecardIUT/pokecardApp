@@ -16,6 +16,9 @@ import rx.schedulers.Schedulers
 class PokemonTCGApiImpl {
     private val pokemonTCGClient: PokemonTCGApi
 
+
+
+
     init {
         val hli = HttpLoggingInterceptor()
         if (BuildConfig.DEBUG) {
@@ -36,10 +39,12 @@ class PokemonTCGApiImpl {
     }
 
 
-    fun getDecks(): Observable<List<SetsItem?>> {
+    fun getDecks(): Observable<List<SetsItem>> {
         return pokemonTCGClient.getDecks()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .map { listDeck -> listDeck.sets}
     }
+
+
 }

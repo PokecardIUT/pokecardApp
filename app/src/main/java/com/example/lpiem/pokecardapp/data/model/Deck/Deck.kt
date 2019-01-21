@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 data class Deck(
 
 	@field:SerializedName("sets")
-	val sets: List<SetsItem?>? = null
+	val sets: List<SetsItem>? = null
 )

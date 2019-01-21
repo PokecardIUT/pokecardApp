@@ -8,16 +8,10 @@ import android.util.Log
 import android.view.View
 import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.presentation.ui.view.LoginCallback
-import com.example.lpiem.pokecardapp.presentation.viewModel.LoginViewModel
+import com.example.lpiem.pokecardapp.presentation.presenter.LoginPresenter
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import kotlinx.android.synthetic.main.activity_connection.*
-import com.google.android.gms.common.util.IOUtils.toByteArray
-import android.content.pm.PackageManager
-import android.content.pm.PackageInfo
-import android.util.Base64
-import java.security.MessageDigest
-import java.security.NoSuchAlgorithmException
 
 
 /*TODO Archi mvvm, button facebook and google, delete onActivityResult ?
@@ -27,7 +21,7 @@ import java.security.NoSuchAlgorithmException
 class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
 
 
-    val viewModel: LoginViewModel = LoginViewModel(this)
+    val viewModel: LoginPresenter = LoginPresenter(this)
     lateinit var callbackManager: CallbackManager
 
     /* private var mGoogleSignInClient: GoogleSignInClient? = null

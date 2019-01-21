@@ -1,28 +1,11 @@
 package com.example.lpiem.pokecardapp.presentation.ui.fragment
 
-import android.content.Context
-import android.content.Intent
-import android.net.ConnectivityManager
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.core.content.ContextCompat.getSystemService
-import androidx.recyclerview.widget.LinearLayoutManager
-import android.view.View
-import com.example.lpiem.pokecardapp.R
-import com.example.lpiem.pokecardapp.data.model.Deck.SetsItem
-import com.example.lpiem.pokecardapp.presentation.ui.activity.LoginActivity
-import com.example.lpiem.pokecardapp.presentation.ui.adapter.DeckListAdapter
-import com.example.lpiem.pokecardapp.presentation.viewModel.DeckListViewModel
-import com.facebook.AccessToken
-import com.facebook.login.LoginManager
-import kotlinx.android.synthetic.main.activity_deck_list.*
-
 class MainFragment {
 /*
     lateinit var name: String
     lateinit var email: String
     lateinit var adapter: DeckListAdapter
-    var viewModel: DeckListViewModel = DeckListViewModel(this);
+    var viewModel: DeckListPresenter = DeckListPresenter(this);
 
     val isOnline: Boolean
         get() {
