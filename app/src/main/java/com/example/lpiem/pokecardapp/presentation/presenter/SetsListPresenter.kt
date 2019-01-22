@@ -1,22 +1,30 @@
 package com.example.lpiem.pokecardapp.presentation.presenter
 
-import android.util.Log
 import com.example.lpiem.pokecardapp.PokeApplication
-import com.example.lpiem.pokecardapp.data.model.Deck.SetsItem
-import com.example.lpiem.pokecardapp.presentation.ui.view.DeckListCallback
+import com.example.lpiem.pokecardapp.data.model.Deck.Deck
 import com.example.lpiem.pokecardapp.presentation.ui.view.SetsListCallback
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+
 
 class SetsListPresenter(var view: SetsListCallback) {
-    var repo = PokeApplication.app.repository
-    var listDeck: List<SetsItem?> = ArrayList<SetsItem?>()
-    fun getDecks(){
-        repo.getDecks().subscribe {
-            listDeck = it
-            view.updateList(it)
-        }
+    var repo = PokeApplication.getInstance().repository
 
+    fun getSets(){
+
+        repo.getSets().enqueue(object : Callback<Deck>{
+            override fun onFailure(call: Call<Deck>, t: Throwable) {
+
+            }
+
+            override fun onResponse(call: Call<Deck>, response: Response<Deck>) {
+                view.updateList(response.body()?.sets!!)
+            }
+
+
+        })
     }
 
-    fun isLoggedFb(): Boolean = repo.isLoggedFb()
 
 }

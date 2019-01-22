@@ -11,7 +11,7 @@ import org.json.JSONException
 
 class LoginPresenter(var callback:LoginCallback) {
 
-    var repository = PokeApplication.app.repository
+    var repository = PokeApplication.getInstance().repository
 
     fun connexionWithEmail(username: String, password: String){
         if(username.isEmpty() || password.isEmpty()){

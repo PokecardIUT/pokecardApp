@@ -8,4 +8,6 @@
     <color name="login_placeholder_color">#73007bff</color>
     <color name="editTextNormal">#8cc0ff</color>
     <color name="editTextActived">#056BB3</color>
+    <color name="bottom_navigation">#056BB3</color>
+    <color name="top_navigation">#056BB3</color>
 </resources>

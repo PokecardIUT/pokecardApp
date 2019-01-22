@@ -14,6 +14,6 @@ class Navigator(fragmentManager: FragmentManager){
     }
 
     fun displayAccount(){
-        fragmentManager.beginTransaction().replace(R.id.account_framelayout, AccountFragment.newInstance()).commit()
+        fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, AccountFragment.newInstance()).commit()
     }
 }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_navigation_search"
+        android:icon="@drawable/ic_search"
+        android:title="@string/bottom_navigation_search" />
+
+    <item
+        android:id="@+id/bottom_navigation_my_sets"
+        android:icon="@drawable/ic_sets"
+        android:title="@string/bottom_navigation_my_sets" />
+
+    <item
+        android:id="@+id/bottom_navigation_vs"
+        android:icon="@drawable/ic_versus_game"
+        android:title="@string/bottom_navigation_vs" />
+
+    <item
+        android:id="@+id/bottom_navigation_ranking"
+        android:icon="@drawable/ic_trophy"
+        android:title="@string/bottom_navigation_ranking" />
+
+    <item
+        android:id="@+id/bottom_navigation_account"
+        android:icon="@drawable/ic_user"
+        android:title="@string/bottom_navigation_account" />
+</menu>

@@ -5,7 +5,7 @@ import com.example.lpiem.pokecardapp.data.model.Deck.SetsItem
 import com.example.lpiem.pokecardapp.presentation.ui.view.SetsListCallback
 
 class AccountPresenter {
-    var repo = PokeApplication.app.repository
+    var repo = PokeApplication.getInstance().repository
 
     fun getName():String {
         return repo.username
