@@ -35,7 +35,6 @@ class SetsListAdapter: RecyclerView.Adapter<SetsListViewHolder>() {
     fun updateSetList(setList: List<SetsItem>){
         this.setsList.clear()
         addSetList(setList)
-        Log.d("mlk", "update")
     }
 
     fun setOnSetClick(onSetClick: (SetsItem)->Unit){

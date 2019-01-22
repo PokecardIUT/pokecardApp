@@ -6,6 +6,7 @@ import com.example.lpiem.pokecardapp.data.model.Deck.Deck
 import com.example.lpiem.pokecardapp.data.model.Deck.SetsItem
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -15,9 +16,6 @@ import rx.schedulers.Schedulers
 
 class PokemonTCGApiImpl {
     private val pokemonTCGClient: PokemonTCGApi
-
-
-
 
     init {
         val hli = HttpLoggingInterceptor()
@@ -39,12 +37,7 @@ class PokemonTCGApiImpl {
     }
 
 
-    fun getDecks(): Observable<List<SetsItem>> {
-        return pokemonTCGClient.getDecks()
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .map { listDeck -> listDeck.sets}
+    fun getSets(): Call<Deck> {
+        return pokemonTCGClient.getSets()
     }
-
-
 }

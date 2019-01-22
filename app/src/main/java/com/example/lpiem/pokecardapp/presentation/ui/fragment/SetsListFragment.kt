@@ -12,8 +12,6 @@ import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.data.model.Deck.SetsItem
 import com.example.lpiem.pokecardapp.presentation.navigator.Navigator
 import com.example.lpiem.pokecardapp.presentation.presenter.SetsListPresenter
-import com.example.lpiem.pokecardapp.presentation.ui.activity.SearchCardActivity
-import com.example.lpiem.pokecardapp.presentation.ui.adapter.DeckListAdapter
 import com.example.lpiem.pokecardapp.presentation.ui.adapter.SetsListAdapter
 import com.example.lpiem.pokecardapp.presentation.ui.view.SetsListCallback
 import kotlinx.android.synthetic.main.fragment_sets_list.*
@@ -45,8 +43,7 @@ class SetsListFragment : Fragment(), SetsListCallback {
 
         adapter.setOnSetClick { onSetClick(it) }
 
-        presenter.getDecks()
-
+        presenter.getSets()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

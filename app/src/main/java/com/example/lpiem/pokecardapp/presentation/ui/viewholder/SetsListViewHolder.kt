@@ -1,11 +1,9 @@
 package com.example.lpiem.pokecardapp.presentation.ui.viewholder
 
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.data.model.Deck.SetsItem
 import com.squareup.picasso.Picasso
@@ -25,6 +23,7 @@ class SetsListViewHolder(var v: View): RecyclerView.ViewHolder(v) {
         setsReleaseDate.text = set.releaseDate
         setsNumberCard.text = set.totalCards.toString()
         Picasso.get().load(set.logoUrl).into(setsImageView)
+
         itemView.setOnClickListener{
             onSetClick?.let {
                 it(set)

@@ -10,10 +10,6 @@ import retrofit2.http.Path
 import rx.Observable
 
 interface PokemonTCGApi {
-   // @GET("/v1/cards/{id}")
-  //  fun getCard(@Path("id") card: String): Observable<Pokemon>
-    @GET("/v1/sets")
-    fun getDecks(): Observable<Deck>
     @GET("/v1/sets")
     fun getSets(): Call<Deck>
 }
