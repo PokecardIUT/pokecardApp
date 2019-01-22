@@ -6,11 +6,18 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.presentation.ui.view.LoginCallback
 import com.example.lpiem.pokecardapp.presentation.presenter.LoginPresenter
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
 import kotlinx.android.synthetic.main.activity_connection.*
 
 
@@ -24,9 +31,9 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
     val viewModel: LoginPresenter = LoginPresenter(this)
     lateinit var callbackManager: CallbackManager
 
-    /* private var mGoogleSignInClient: GoogleSignInClient? = null
-     private var loginButton: LoginButton? = null
- */
+    lateinit var mGoogleSignInClient: GoogleSignInClient
+    // private var loginButton: LoginButton? = null
+
     /*   public override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
            super.onActivityResult(requestCode, resultCode, data)
            Log.d("mlk","2")
@@ -46,7 +53,14 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        callbackManager.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == BUTTON_GOOGLE){
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            handleSignInResult(task)
+        } else {
+            callbackManager.onActivityResult(requestCode, resultCode, data)
+        }
+
     }
 
 
@@ -59,6 +73,7 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
         buttonConnectWithEmail.setOnClickListener(this)
         buttonConnectionWithFb.setReadPermissions("public_profile", "email")
         buttonConnectionWithFb.setOnClickListener(this)
+        buttonConnectionWithGoogle.setOnClickListener(this)
 
         if (viewModel.isLoggedFb()) {
 
@@ -67,13 +82,13 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
         }
 
 
-        /*
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+
+        val googleSignInOption = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build()
 
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
-
+        mGoogleSignInClient = GoogleSignIn.getClient(this, googleSignInOption)
+/*
         val signInButton = findViewById<SignInButton>(R.id.sign_in_button)
         signInButton.setSize(SignInButton.SIZE_STANDARD)
 
@@ -124,8 +139,8 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
-
-        /* val acct = GoogleSignIn.getLastSignedInAccount(this)
+/*
+         val acct = GoogleSignIn.getLastSignedInAccount(this)
          if (acct != null) {
              val personEmail = acct.email
              val personName = acct.givenName
@@ -140,6 +155,10 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
             }
             R.id.buttonConnectionWithFb -> {
                 viewModel.connectionWithFb(callbackManager, buttonConnectionWithFb)
+            }
+            R.id.buttonConnectionWithGoogle -> {
+                val signInIntent = mGoogleSignInClient?.signInIntent
+                startActivityForResult(signInIntent, BUTTON_GOOGLE)
             }
         }
 
@@ -177,7 +196,7 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
             mGoogleSignInClient!!.revokeAccess()
                     .addOnCompleteListener(this) { }
         }
-
+*/
         private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
             try {
                 val account = completedTask.getResult<ApiException>(ApiException::class.java)
@@ -185,17 +204,17 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
                 val personName = account.givenName
 
                 Toast.makeText(this, "Intent Google", Toast.LENGTH_SHORT)
-
-                gotoApiActivity(personName, personEmail)
+                Log.d("mlk",personEmail)
+               // gotoApiActivity(personName, personEmail)
                 // Signed in successfully, show authenticated UI.
             } catch (e: ApiException) {
                 // The ApiException status code indicates the detailed failure reason.
                 // Please refer to the GoogleSignInStatusCodes class reference for more information.
-                Log.w(TAG, "signInResult:failed code=" + e.statusCode)
+                Log.w("mlk", "signInResult:failed code=" + e.statusCode + e.message)
             }
 
         }
-
+/*
         private fun gotoApiActivity(name: String?, email: String?) {
             val signInIntent = Intent(this@LoginActivity, DeckListActivity::class.java)
             signInIntent.putExtra("name", name)
@@ -205,6 +224,7 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
     */
     companion object {
         private val SIGN_OUT = 8000
+        private const val BUTTON_GOOGLE = 9001
     }
 
 }
