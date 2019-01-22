@@ -11,9 +11,8 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usernameField"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        style="@style/LoginTextField"
+        android:layout_marginTop="8dp"
         app:hintTextAppearance="@style/LoginEditTextHint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.658"
@@ -21,21 +20,18 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView4">
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            android:theme="@style/LoginEditText"
+            style="@style/LoginInputText"
+            android:hint="@string/login_hint_text_email"
             android:inputType="textEmailAddress"
-            android:textColor="@color/white"
-            android:textColorHint="@color/login_placeholder_color" />
+            android:textColorHint="@color/login_placeholder_color"
+            android:theme="@style/LoginMyEditText" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/passwordField"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
+        style="@style/LoginTextField"
         android:layout_marginTop="16dp"
         app:hintTextAppearance="@style/LoginEditTextHint"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,23 +40,19 @@
         app:layout_constraintTop_toBottomOf="@+id/usernameField">
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:theme="@style/LoginEditText"
+            style="@style/LoginInputText"
+            android:theme="@style/LoginMyEditText"
+            android:hint="@string/login_hint_text_password"
             android:inputType="textPassword"
-            android:textColor="@color/white"
             android:textColorHint="@color/login_placeholder_color" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/buttonConnectWithEmail"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="250dp"
-        android:layout_height="45dp"
+        style="@style/LoginButton"
         android:layout_marginTop="24dp"
-        android:text="CONNEXION"
+        android:text="@string/login_text_connexion"
         android:textColor="@color/white"
         android:background="@drawable/button_radius"
         app:layout_constraintEnd_toEndOf="parent"
@@ -69,8 +61,7 @@
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/buttonConnectionWithGoogle"
-        android:layout_width="258dp"
-        android:layout_height="50dp"
+        style="@style/LoginButton"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,8 +69,7 @@
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/buttonConnectionWithFb"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        style="@style/LoginButton"
         android:paddingBottom="15dp"
         android:paddingTop="15dp"
         android:layout_marginStart="53dp"
@@ -92,8 +82,7 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="34dp"
-        android:layout_height="46dp"
+        style="@style/LoginImageView"
         android:layout_marginEnd="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/usernameField"
         app:layout_constraintEnd_toStartOf="@+id/usernameField"
@@ -102,8 +91,7 @@
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="34dp"
-        android:layout_height="46dp"
+        style="@style/LoginImageView"
         android:layout_marginEnd="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/passwordField"
         app:layout_constraintEnd_toStartOf="@+id/passwordField"
@@ -112,14 +100,13 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="166dp"
-        android:layout_height="116dp"
+        android:layout_width="221dp"
+        android:layout_height="217dp"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@mipmap/pokecardapp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

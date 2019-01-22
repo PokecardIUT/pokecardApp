@@ -11,4 +11,7 @@
     <string name="adapter_sets_list_realese_date">Realese date</string>
     <string name="adapter_sets_list_number_card">Nb card</string>
     <string name="adapter_sets_list_imageview">Sets image</string>
+    <string name="login_hint_text_password">Password</string>
+    <string name="login_hint_text_email">Email</string>
+    <string name="login_text_connexion">CONNEXION</string>
 </resources>
