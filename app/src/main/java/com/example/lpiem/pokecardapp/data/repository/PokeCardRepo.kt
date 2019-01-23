@@ -15,11 +15,9 @@ class PokeCardRepo{
     var pokeCardApi = PokeCardApiImpl()
     var facebookApi = FacebookApiImpl()
     lateinit var username: String
-    lateinit var password: String
 
     fun connexionWithEmail(username:String, password:String): Observable<Login>{
         this.username = username
-        this.password = password
         return pokeCardApi.connexionWithEmail(username,password)
     }
 

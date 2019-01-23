@@ -11,9 +11,6 @@ class AccountPresenter {
         return repo.username
     }
 
-    fun getPassword():String {
-        return repo.password
-    }
     fun isLoggedFb(): Boolean = repo.isLoggedFb()
 
 }

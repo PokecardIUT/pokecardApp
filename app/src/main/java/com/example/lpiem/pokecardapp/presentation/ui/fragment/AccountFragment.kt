@@ -36,7 +36,6 @@ class AccountFragment : Fragment(), View.OnClickListener{
         navigator = Navigator(fragmentManager!!)
 
         usernameTv.text = presenter.getName()
-      //  passwordTv.text = presenter.getPassword()
 
     }
 
