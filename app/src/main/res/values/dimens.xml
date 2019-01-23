@@ -4,4 +4,5 @@
     <dimen name="adapter_sets_list_margin_start_end_image_view">47dp</dimen>
     <dimen name="adapter_sets_list_margin_start_end_title">32dp</dimen>
     <dimen name="adapter_sets_list_margin_start_end_description">16dp</dimen>
+    <dimen name="adapter_user_list_margin_top_image_view_position">10dp</dimen>
 </resources>

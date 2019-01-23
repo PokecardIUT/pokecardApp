@@ -38,6 +38,11 @@ class PokeCardActivity : AppCompatActivity(), BottomNavigationView.OnNavigationI
                 title = getString(R.string.bottom_navigation_account)
             }
 
+            R.id.bottom_navigation_ranking -> {
+                navigator.displayRanking()
+                title = getString(R.string.bottom_navigation_ranking)
+            }
+
         }
         return false
     }
