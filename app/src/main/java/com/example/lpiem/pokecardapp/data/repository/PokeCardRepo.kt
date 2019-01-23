@@ -6,6 +6,7 @@ import com.example.lpiem.pokecardapp.data.manager.api.PokeCardApiImpl
 import com.example.lpiem.pokecardapp.data.manager.api.PokemonTCGApiImpl
 import com.example.lpiem.pokecardapp.data.model.Deck.Deck
 import com.example.lpiem.pokecardapp.data.model.Login.Login
+import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import retrofit2.Call
 import rx.Observable
 
@@ -24,6 +25,10 @@ class PokeCardRepo{
 
     fun getSets(): Call<Deck>{
         return pokemonTCGApi.getSets()
+    }
+
+    fun getCardBySets(setCode: String): Call<SetCard>{
+        return pokemonTCGApi.getCardBySets(setCode)
     }
 
     fun isLoggedFb(): Boolean = facebookApi.isLogged()

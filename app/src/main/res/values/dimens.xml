@@ -4,4 +4,8 @@
     <dimen name="adapter_sets_list_margin_start_end_image_view">47dp</dimen>
     <dimen name="adapter_sets_list_margin_start_end_title">32dp</dimen>
     <dimen name="adapter_sets_list_margin_start_end_description">16dp</dimen>
+    <dimen name="adapter_card_list_card_margin_top">8dp</dimen>
+    <dimen name="adapter_card_list_card_width">115dp</dimen>
+    <dimen name="adapter_card_list_card_height">150dp</dimen>
+    <dimen name="fragment_card_list_recyclerview_margin_start_end">8dp</dimen>
 </resources>

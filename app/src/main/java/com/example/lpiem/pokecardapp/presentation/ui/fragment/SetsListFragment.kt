@@ -57,6 +57,7 @@ class SetsListFragment : Fragment(), SetsListCallback {
 
     private fun onSetClick(set: SetsItem){
         Log.d("mlk", "switch")
+        navigator.displayCardList(set.code!!)
     }
 
     companion object {
