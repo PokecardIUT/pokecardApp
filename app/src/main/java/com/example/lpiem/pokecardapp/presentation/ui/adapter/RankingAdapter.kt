@@ -3,10 +3,8 @@ package com.example.lpiem.pokecardapp.presentation.ui.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lpiem.pokecardapp.R
-import com.example.lpiem.pokecardapp.data.model.Deck.SetsItem
-import com.example.lpiem.pokecardapp.data.model.Deck.User
+import com.example.lpiem.pokecardapp.data.model.User.User
 import com.example.lpiem.pokecardapp.presentation.ui.viewholder.RankingViewHolder
-import com.example.lpiem.pokecardapp.presentation.ui.viewholder.SetsListViewHolder
 import com.example.lpiem.pokecardapp.presentation.utils.inflate
 
 class RankingAdapter: RecyclerView.Adapter<RankingViewHolder>() {
