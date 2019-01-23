@@ -9,16 +9,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lpiem.pokecardapp.R
-import com.example.lpiem.pokecardapp.data.model.Deck.SetsItem
 import com.example.lpiem.pokecardapp.data.model.Deck.User
 import com.example.lpiem.pokecardapp.presentation.navigator.Navigator
 import com.example.lpiem.pokecardapp.presentation.presenter.RankingPresenter
-import com.example.lpiem.pokecardapp.presentation.presenter.SetsListPresenter
 import com.example.lpiem.pokecardapp.presentation.ui.adapter.RankingAdapter
-import com.example.lpiem.pokecardapp.presentation.ui.adapter.SetsListAdapter
 import com.example.lpiem.pokecardapp.presentation.ui.view.RankingCallback
-import com.example.lpiem.pokecardapp.presentation.ui.view.SetsListCallback
-import kotlinx.android.synthetic.main.fragment_sets_list.*
+import kotlinx.android.synthetic.main.fragment_user_list.*
 
 
 class RankingFragment : Fragment(), RankingCallback {
