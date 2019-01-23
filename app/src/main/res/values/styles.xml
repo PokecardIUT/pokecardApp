@@ -14,11 +14,17 @@
         <item name="colorControlActivated">@color/editTextActived</item>
     </style>
 
-    <!--Floating label text style-->
-    <style name="MyHintText" parent="TextAppearance.AppCompat.Small">
+    <style name="LoginEditTextHint" parent="TextAppearance.AppCompat.Small">
         <item name="android:textColor">@color/editTextActived</item>
     </style>
 
+    <style name="SetsListAdapterTextConnerBottom">
+        <item name="android:textSize">10sp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+    
     <style name="LoginButton">
         <item name="android:layout_width">250dp</item>
         <item name="android:layout_height">45dp</item>

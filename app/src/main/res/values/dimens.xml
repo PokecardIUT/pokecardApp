@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="adapter_sets_list_margin_cardview">8dp</dimen>
+    <dimen name="adapter_sets_list_margin_start_end_image_view">47dp</dimen>
+    <dimen name="adapter_sets_list_margin_start_end_title">32dp</dimen>
+    <dimen name="adapter_sets_list_margin_start_end_description">16dp</dimen>
+</resources>
