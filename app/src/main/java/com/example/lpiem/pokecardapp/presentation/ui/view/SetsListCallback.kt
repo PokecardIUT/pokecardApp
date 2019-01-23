@@ -2,7 +2,7 @@ package com.example.lpiem.pokecardapp.presentation.ui.view
 
 import com.example.lpiem.pokecardapp.data.model.Deck.SetsItem
 
-interface DeckListCallback {
+interface SetsListCallback {
 
-    fun notifyDataChange(listDeck: List<SetsItem?>)
+    fun updateList(setsList: List<SetsItem>)
 }

@@ -1,4 +1,4 @@
-package com.example.lpiem.pokecardapp.presentation.viewModel
+package com.example.lpiem.pokecardapp.presentation.presenter
 
 import android.os.Bundle
 import android.util.Log
@@ -9,9 +9,9 @@ import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
 import org.json.JSONException
 
-class LoginViewModel(var callback:LoginCallback) {
+class LoginPresenter(var callback:LoginCallback) {
 
-    var repository = PokeApplication.app.repository
+    var repository = PokeApplication.getInstance().repository
 
     fun connexionWithEmail(username: String, password: String){
         if(username.isEmpty() || password.isEmpty()){
