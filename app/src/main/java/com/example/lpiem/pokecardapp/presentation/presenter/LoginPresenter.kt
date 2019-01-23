@@ -22,11 +22,7 @@ class LoginPresenter(var callback:LoginCallback) {
         repository.connexionWithEmail(username,password).subscribe {
             res -> Log.d("ConnexionEmail", res.toString())
             if(res.success != null){
-                //TODO add function to write token in file
-                callback.goToDeckListActivity("email", username, "")
-            }
-            else{
-
+                callback.goToPokeCardActivity()
             }
         }
     }
@@ -60,7 +56,7 @@ class LoginPresenter(var callback:LoginCallback) {
                 val email = `object`.getString("email")
                 var name = `object`.getString("name")
                 name = name.split(" ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[0]
-                callback.goToDeckListActivity("facebook",name,email)
+                callback.goToPokeCardActivity()
 
             } catch (e: JSONException) {
                 e.printStackTrace()
