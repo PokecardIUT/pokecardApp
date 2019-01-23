@@ -19,4 +19,5 @@
     <string name="bottom_navigation_vs">Combat</string>
     <string name="bottom_navigation_ranking">Classement</string>
     <string name="bottom_navigation_account">Mon compte</string>
+    <string name="meilleurs_joueurs">Meilleurs joueurs</string>
 </resources>
