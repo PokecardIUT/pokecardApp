@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lpiem.pokecardapp.R
-import com.example.lpiem.pokecardapp.data.model.Deck.User
+import com.example.lpiem.pokecardapp.data.model.User.User
 import com.example.lpiem.pokecardapp.presentation.navigator.Navigator
 import com.example.lpiem.pokecardapp.presentation.presenter.RankingPresenter
 import com.example.lpiem.pokecardapp.presentation.ui.adapter.RankingAdapter

@@ -5,7 +5,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lpiem.pokecardapp.R
-import com.example.lpiem.pokecardapp.data.model.Deck.User
+import com.example.lpiem.pokecardapp.data.model.User.User
 
 class RankingViewHolder(var v: View): RecyclerView.ViewHolder(v) {
 

@@ -1,4 +1,4 @@
-package com.example.lpiem.pokecardapp.data.model.Deck
+package com.example.lpiem.pokecardapp.data.model.User
 
 data class User (
     var name:String? = null,

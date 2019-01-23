@@ -1,6 +1,6 @@
 package com.example.lpiem.pokecardapp.presentation.presenter
 
-import com.example.lpiem.pokecardapp.data.model.Deck.User
+import com.example.lpiem.pokecardapp.data.model.User.User
 import com.example.lpiem.pokecardapp.presentation.ui.view.RankingCallback
 import java.util.*
 
