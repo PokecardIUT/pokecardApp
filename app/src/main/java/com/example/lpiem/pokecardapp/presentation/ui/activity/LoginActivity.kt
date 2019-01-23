@@ -3,7 +3,7 @@ package com.example.lpiem.pokecardapp.presentation.ui.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import com.example.lpiem.pokecardapp.R
@@ -142,7 +142,7 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             R.id.buttonConnectWithEmail -> {
-                viewModel.connexionWithEmail(usernameField.text.toString(), passwordField.text.toString())
+                viewModel.connexionWithEmail(usernameField.editText?.text.toString(), passwordField.editText?.text.toString())
             }
             R.id.buttonConnectionWithFb -> {
                 viewModel.connectionWithFb(callbackManager, buttonConnectionWithFb)

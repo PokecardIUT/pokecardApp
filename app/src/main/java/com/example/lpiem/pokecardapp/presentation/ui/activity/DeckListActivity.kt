@@ -3,9 +3,9 @@ package com.example.lpiem.pokecardapp.presentation.ui.activity
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
 
@@ -31,6 +31,6 @@ class DeckListActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        finishAffinity()
+    //    finishAffinity()
     }
 }
