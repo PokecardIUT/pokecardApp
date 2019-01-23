@@ -3,6 +3,9 @@
     <string name="server_client_id">550451927601-nsd97t4r5fm8e6iu6r2vei3l7eq7r9fp.apps.googleusercontent.com</string>
     <string name="facebook_app_id">749987178674848</string>
     <string name="fb_login_protocol_scheme">fb749987178674848</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login_hint_text_password">Password</string>
     <string name="login_hint_text_email">Email</string>
     <string name="login_text_connexion">CONNEXION</string>

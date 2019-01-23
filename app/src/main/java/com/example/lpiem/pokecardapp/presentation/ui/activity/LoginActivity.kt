@@ -157,7 +157,7 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
 
     override fun goToDeckListActivity(method: String, name: String, email: String) {
         //TODO Ajoute du navigator
-        val deckListActivityIntent = Intent(this, DeckListActivity::class.java)
+        val deckListActivityIntent = Intent(this, SearchCardActivity::class.java)
         deckListActivityIntent.putExtra("method", method)
         deckListActivityIntent.putExtra("name", name)
         deckListActivityIntent.putExtra("email", email)

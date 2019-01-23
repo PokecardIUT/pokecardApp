@@ -12,7 +12,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/usernameField"
         style="@style/LoginTextField"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="8dp"
         app:hintTextAppearance="@style/MyHintText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.658"
@@ -21,10 +21,10 @@
 
         <EditText
             style="@style/LoginInputText"
-            android:theme="@style/LoginMyEditText"
             android:hint="@string/login_hint_text_email"
             android:inputType="textEmailAddress"
-            android:textColorHint="@color/login_placeholder_color" />
+            android:textColorHint="@color/login_placeholder_color"
+            android:theme="@style/LoginMyEditText" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -100,11 +100,10 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="166dp"
-        android:layout_height="116dp"
+        android:layout_width="221dp"
+        android:layout_height="217dp"
         android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/pokecardapp" />
