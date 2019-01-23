@@ -4,6 +4,7 @@ import androidx.fragment.app.FragmentManager
 import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.presentation.ui.fragment.AccountFragment
 import com.example.lpiem.pokecardapp.presentation.ui.fragment.CardListFragment
+import com.example.lpiem.pokecardapp.presentation.ui.fragment.RankingFragment
 import com.example.lpiem.pokecardapp.presentation.ui.fragment.SetsListFragment
 
 class Navigator(fragmentManager: FragmentManager){
@@ -21,5 +22,9 @@ class Navigator(fragmentManager: FragmentManager){
 
     fun displayAccount(){
         fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, AccountFragment.newInstance()).commit()
+    }
+
+    fun displayRanking(){
+        fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, RankingFragment.newInstance()).commit()
     }
 }

@@ -8,4 +8,5 @@
     <dimen name="adapter_card_list_card_width">115dp</dimen>
     <dimen name="adapter_card_list_card_height">150dp</dimen>
     <dimen name="fragment_card_list_recyclerview_margin_start_end">8dp</dimen>
+    <dimen name="adapter_user_list_margin_top_image_view_position">10dp</dimen>
 </resources>
