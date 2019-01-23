@@ -33,6 +33,10 @@ class PokeCardActivity : AppCompatActivity(), BottomNavigationView.OnNavigationI
                 navigator.displaySetsList()
                 title = getString(R.string.bottom_navigation_search)
             }
+            R.id.bottom_navigation_account -> {
+                navigator.displayAccount()
+                title = getString(R.string.bottom_navigation_account)
+            }
 
         }
         return false
