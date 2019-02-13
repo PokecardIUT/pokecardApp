@@ -41,6 +41,7 @@ class LoginViewModel: ViewModel() {
                 if(response.body()?.success != null){
                     val user = User()
                     user.name = username
+                    repository.setUser(user)
                     userLiveData.postValue(user)
                 } else {
                     error.postValue(ErrorMessage("Erreur d'authentification"))

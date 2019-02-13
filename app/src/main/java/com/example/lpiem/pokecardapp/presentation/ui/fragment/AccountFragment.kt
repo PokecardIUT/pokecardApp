@@ -6,27 +6,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.example.lpiem.pokecardapp.R
+import com.example.lpiem.pokecardapp.data.model.User.User
 import com.example.lpiem.pokecardapp.presentation.navigator.Navigator
-import com.example.lpiem.pokecardapp.presentation.presenter.AccountPresenter
+import com.example.lpiem.pokecardapp.presentation.presenter.AccountViewModel
 import com.example.lpiem.pokecardapp.presentation.ui.activity.LoginActivity
+import com.example.lpiem.pokecardapp.presentation.ui.fragment.base.BaseFragment
+import com.example.lpiem.pokecardapp.presentation.ui.view.AccountCallback
 import com.facebook.AccessToken.*
 import com.facebook.login.LoginManager
 import kotlinx.android.synthetic.main.fragment_account.*
 
 
-class AccountFragment : Fragment(), View.OnClickListener{
+class AccountFragment : BaseFragment<AccountViewModel>(), AccountCallback, View.OnClickListener{
 
-    private lateinit var presenter: AccountPresenter
+
     private lateinit var navigator: Navigator
-
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        presenter = AccountPresenter()
-    }
-
+    override val viewModelClass = AccountViewModel::class
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,7 +32,14 @@ class AccountFragment : Fragment(), View.OnClickListener{
 
         navigator = Navigator(fragmentManager!!)
 
-        usernameTv.text = presenter.getName()
+        val updateUser = Observer<User> { postUser ->
+            showUserAccount(postUser)
+        }
+
+        viewModel.getUser().observe(this,updateUser)
+
+        viewModel.retrieveUser()
+
 
     }
 
@@ -44,13 +48,17 @@ class AccountFragment : Fragment(), View.OnClickListener{
 
     }
 
+    override fun showUserAccount(user: User) {
+        usernameTv.text = user.name
+    }
+
     override fun onClick(v: View) {
 
         when (v.id) {
 
             R.id.disconnectButton -> {
 
-                if (presenter.isLoggedFb()) {
+                if (viewModel.isLoggedFb()) {
 
                     setCurrentAccessToken(null)
 
