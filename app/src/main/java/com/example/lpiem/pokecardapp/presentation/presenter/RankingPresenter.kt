@@ -9,10 +9,10 @@ class RankingPresenter(var view: RankingCallback) {
 
         val userList: ArrayList<User> = ArrayList()
 
-        userList.add(User("Theo", 50, 250))
-        userList.add(User("Loic", 150, 150))
-        userList.add(User("Thomas", 10, 15))
-        userList.add(User("Morgane", 5, 5))
+        userList.add(User("Theo","" , 50, 250))
+        userList.add(User("Loic", "" , 150, 150))
+        userList.add(User("Thomas","", 10, 15))
+        userList.add(User("Morgane","", 5, 5))
 
         Collections.sort(userList) { user1, user2 -> user1.level!!.compareTo(user2.level!!) }
         Collections.reverse(userList)

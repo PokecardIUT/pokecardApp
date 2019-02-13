@@ -4,6 +4,7 @@ import com.example.lpiem.pokecardapp.BuildConfig
 import com.example.lpiem.pokecardapp.data.model.Login.Login
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -34,9 +35,7 @@ class PokeCardApiImpl : PokeCardApi {
         pokeCardApi = retrofit.create(PokeCardApi::class.java)
     }
 
-    override fun connexionWithEmail(username: String, password: String): Observable<Login> {
+    override fun connexionWithEmail(username: String, password: String): Call<Login> {
         return pokeCardApi.connexionWithEmail(username, password)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
     }
 }

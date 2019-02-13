@@ -8,8 +8,6 @@ import com.example.lpiem.pokecardapp.data.model.Deck.Deck
 import com.example.lpiem.pokecardapp.data.model.Login.Login
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import retrofit2.Call
-import rx.Observable
-
 
 class PokeCardRepo{
     var pokemonTCGApi= PokemonTCGApiImpl()
@@ -17,7 +15,7 @@ class PokeCardRepo{
     var facebookApi = FacebookApiImpl()
     lateinit var username: String
 
-    fun connexionWithEmail(username:String, password:String): Observable<Login>{
+    fun connexionWithEmail(username:String, password:String): Call<Login>{
         this.username = username
         return pokeCardApi.connexionWithEmail(username,password)
     }

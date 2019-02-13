@@ -7,26 +7,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.data.model.Deck.SetsItem
 import com.example.lpiem.pokecardapp.presentation.navigator.Navigator
-import com.example.lpiem.pokecardapp.presentation.presenter.SetsListPresenter
+import com.example.lpiem.pokecardapp.presentation.presenter.SetsListViewModel
 import com.example.lpiem.pokecardapp.presentation.ui.adapter.SetsListAdapter
+import com.example.lpiem.pokecardapp.presentation.ui.fragment.base.BaseFragment
 import com.example.lpiem.pokecardapp.presentation.ui.view.SetsListCallback
 import kotlinx.android.synthetic.main.fragment_sets_list.*
+import kotlin.reflect.KClass
 
 
-class SetsListFragment : Fragment(), SetsListCallback {
+class SetsListFragment() : SetsListCallback, BaseFragment<SetsListViewModel>() {
 
-    private lateinit var presenter: SetsListPresenter
     private lateinit var adapter: SetsListAdapter
     private lateinit var navigator: Navigator
-
+    override val viewModelClass = SetsListViewModel::class
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        presenter = SetsListPresenter(this)
         adapter = SetsListAdapter()
     }
 
@@ -43,7 +44,14 @@ class SetsListFragment : Fragment(), SetsListCallback {
 
         adapter.setOnSetClick { onSetClick(it) }
 
-        presenter.getSets()
+        var updateSets = Observer<List<SetsItem>> { postList ->
+            updateList(postList)
+
+        }
+
+        viewModel.getListSets().observe(this,updateSets);
+
+        viewModel.getSets()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -56,7 +64,6 @@ class SetsListFragment : Fragment(), SetsListCallback {
     }
 
     private fun onSetClick(set: SetsItem){
-        Log.d("mlk", "switch")
         navigator.displayCardList(set.code!!)
     }
 
