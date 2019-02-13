@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.lpiem.pokecardapp.presentation.presenter.AccountViewModel
 import com.example.lpiem.pokecardapp.presentation.presenter.CardListViewModel
 import com.example.lpiem.pokecardapp.presentation.presenter.LoginViewModel
+import com.example.lpiem.pokecardapp.presentation.presenter.RankingViewModel
 import com.example.lpiem.pokecardapp.presentation.presenter.SetsListViewModel
 
 class ViewModelFactory: ViewModelProvider.Factory {
@@ -20,6 +21,9 @@ class ViewModelFactory: ViewModelProvider.Factory {
         }
         if(modelClass.isAssignableFrom(AccountViewModel::class.java)){
             return AccountViewModel() as T
+        }
+        if(modelClass.isAssignableFrom(RankingViewModel::class.java)){
+            return RankingViewModel() as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
