@@ -6,9 +6,15 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.example.lpiem.pokecardapp.R
+import com.example.lpiem.pokecardapp.data.model.ErrorMessage
+import com.example.lpiem.pokecardapp.data.model.User.User
 import com.example.lpiem.pokecardapp.presentation.ui.view.LoginCallback
-import com.example.lpiem.pokecardapp.presentation.presenter.LoginPresenter
+import com.example.lpiem.pokecardapp.presentation.presenter.LoginViewModel
+import com.example.lpiem.pokecardapp.presentation.presenter.factory.ViewModelFactory
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -27,7 +33,9 @@ import kotlinx.android.synthetic.main.activity_connection.*
 class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
 
 
-    val viewModel: LoginPresenter = LoginPresenter(this)
+    var viewModelFactory: ViewModelFactory = ViewModelFactory()
+    lateinit var viewModel: LoginViewModel
+
     lateinit var callbackManagerFacebook: CallbackManager
     lateinit var mGoogleSignInClient: GoogleSignInClient
 
@@ -37,7 +45,7 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
 
         if(requestCode == BUTTON_GOOGLE){
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
-            handleSignInResult(task)
+            viewModel.getInfoGoogle(task)
         } else {
             callbackManagerFacebook.onActivityResult(requestCode, resultCode, data)
         }
@@ -49,6 +57,8 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_connection)
 
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java)
+
         callbackManagerFacebook = CallbackManager.Factory.create()
 
         buttonConnectWithEmail.setOnClickListener(this)
@@ -56,13 +66,29 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
         buttonConnectionWithFb.setOnClickListener(this)
         buttonConnectionWithGoogle.setOnClickListener(this)
 
-        if (viewModel.isLoggedFb()) {
-
-            viewModel.getInfoFb(AccessToken.getCurrentAccessToken())
-
+        val userLoggedFb = Observer<Boolean> { postBool ->
+            if(postBool){
+                viewModel.getInfoFb(AccessToken.getCurrentAccessToken())
+            }
         }
 
+        viewModel.isLoggedFb()
 
+        val updateUser = Observer<User> { postUser ->
+            if(postUser != null){
+                goToPokeCardActivity()
+            }
+        }
+
+        val updateError = Observer<ErrorMessage> { postError ->
+            if(postError != null){
+                showError(postError.message!!)
+            }
+        }
+
+        viewModel.getUser().observe(this,updateUser)
+        viewModel.getIsLoggedFb().observe(this,userLoggedFb)
+        viewModel.getError().observe(this,updateError)
 
         val googleSignInOption = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -91,7 +117,7 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
     }
 
     override fun showError(message: String) {
-        Log.d("ConnexionEmail", "Error")
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun goToPokeCardActivity() {
@@ -101,20 +127,6 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
 
     override fun getContext(): Context = this
 
-    private fun handleSignInResult(completedTask: Task<GoogleSignInAccount>) {
-        try {
-            val account = completedTask.getResult<ApiException>(ApiException::class.java)
-            val personEmail = account!!.email
-            val personName = account.givenName
-
-
-            goToPokeCardActivity()
-        } catch (e: ApiException) {
-
-            Log.w("mlk", "signInResult:failed code=" + e.statusCode)
-        }
-
-    }
 
     companion object {
         private const val BUTTON_GOOGLE = 9001

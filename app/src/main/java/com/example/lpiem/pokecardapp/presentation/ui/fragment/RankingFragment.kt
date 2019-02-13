@@ -7,26 +7,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.data.model.User.User
 import com.example.lpiem.pokecardapp.presentation.navigator.Navigator
-import com.example.lpiem.pokecardapp.presentation.presenter.RankingPresenter
+import com.example.lpiem.pokecardapp.presentation.presenter.RankingViewModel
 import com.example.lpiem.pokecardapp.presentation.ui.adapter.RankingAdapter
+import com.example.lpiem.pokecardapp.presentation.ui.fragment.base.BaseFragment
 import com.example.lpiem.pokecardapp.presentation.ui.view.RankingCallback
 import kotlinx.android.synthetic.main.fragment_user_list.*
+import kotlin.reflect.KClass
 
 
-class RankingFragment : Fragment(), RankingCallback {
-
-    private lateinit var presenter: RankingPresenter
+class RankingFragment : BaseFragment<RankingViewModel>(), RankingCallback {
     private lateinit var adapter: RankingAdapter
     private lateinit var navigator: Navigator
-
+    override val viewModelClass = RankingViewModel::class
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        presenter = RankingPresenter(this)
         adapter = RankingAdapter()
     }
 
@@ -41,7 +41,13 @@ class RankingFragment : Fragment(), RankingCallback {
 
         fragment_user_list_recyclerview.adapter = adapter
 
-        presenter.getRank()
+        val updateUserList = Observer<List<User>>{
+            postList -> updateList(postList)
+        }
+
+        viewModel.getUserList().observe(this, updateUserList)
+
+        viewModel.getRank()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

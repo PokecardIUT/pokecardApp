@@ -1,15 +1,20 @@
 package com.example.lpiem.pokecardapp.presentation.presenter
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.example.lpiem.pokecardapp.PokeApplication
+import com.example.lpiem.pokecardapp.data.model.SetCard.Card
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import com.example.lpiem.pokecardapp.presentation.ui.view.CardListCallback
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CardListPresenter(var view: CardListCallback) {
+class CardListViewModel: ViewModel() {
     var repo = PokeApplication.getInstance().repository
+    var cardList = MutableLiveData<List<Card>>()
 
     fun getCardBySets(setCode: String) {
         repo.getCardBySets(setCode).enqueue(object : Callback<SetCard> {
@@ -20,11 +25,13 @@ class CardListPresenter(var view: CardListCallback) {
             override fun onResponse(call: Call<SetCard>, response: Response<SetCard>) {
                 Log.d("mlk","succes")
 
-                view.updateList(response.body()?.cards!!)
+                cardList.postValue(response.body()?.cards!!)
             }
 
 
         })
     }
+
+    fun getCardList() : LiveData<List<Card>> = cardList
 
 }

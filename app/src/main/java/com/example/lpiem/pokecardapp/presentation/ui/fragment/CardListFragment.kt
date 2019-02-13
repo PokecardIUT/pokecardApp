@@ -6,27 +6,27 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.data.model.SetCard.Card
 import com.example.lpiem.pokecardapp.presentation.navigator.Navigator
-import com.example.lpiem.pokecardapp.presentation.presenter.CardListPresenter
+import com.example.lpiem.pokecardapp.presentation.presenter.CardListViewModel
 import com.example.lpiem.pokecardapp.presentation.ui.adapter.CardListAdapter
+import com.example.lpiem.pokecardapp.presentation.ui.fragment.base.BaseFragment
 import com.example.lpiem.pokecardapp.presentation.ui.view.CardListCallback
 import kotlinx.android.synthetic.main.fragment_card_list.*
 
 private const val INTENT_SET_ID_EXTRA = "INTENT_SET_ID_EXTRA"
 
-class CardListFragment: Fragment(), CardListCallback {
-    private lateinit var presenter: CardListPresenter
+class CardListFragment : BaseFragment<CardListViewModel>(), CardListCallback {
     private lateinit var adapter: CardListAdapter
     private lateinit var navigator: Navigator
     private lateinit var setCode: String
+    override val viewModelClass = CardListViewModel::class
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        presenter = CardListPresenter(this)
         adapter = CardListAdapter()
     }
 
@@ -42,7 +42,13 @@ class CardListFragment: Fragment(), CardListCallback {
 
         adapter.setOnCardClick { onSetClick(it) }
 
-        presenter.getCardBySets(setCode)
+        val updateCardList = Observer<List<Card>>{
+            postList -> updateList(postList)
+        }
+
+        viewModel.getCardList().observe(this, updateCardList)
+
+        viewModel.getCardBySets(setCode)
 
     }
 

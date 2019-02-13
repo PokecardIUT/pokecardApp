@@ -7,18 +7,16 @@ import com.example.lpiem.pokecardapp.data.manager.api.PokemonTCGApiImpl
 import com.example.lpiem.pokecardapp.data.model.Deck.Deck
 import com.example.lpiem.pokecardapp.data.model.Login.Login
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
+import com.example.lpiem.pokecardapp.data.model.User.User
 import retrofit2.Call
-import rx.Observable
-
 
 class PokeCardRepo{
     var pokemonTCGApi= PokemonTCGApiImpl()
     var pokeCardApi = PokeCardApiImpl()
     var facebookApi = FacebookApiImpl()
-    lateinit var username: String
+    private lateinit var user: User
 
-    fun connexionWithEmail(username:String, password:String): Observable<Login>{
-        this.username = username
+    fun connexionWithEmail(username:String, password:String): Call<Login>{
         return pokeCardApi.connexionWithEmail(username,password)
     }
 
@@ -30,6 +28,12 @@ class PokeCardRepo{
     fun getCardBySets(setCode: String): Call<SetCard>{
         return pokemonTCGApi.getCardBySets(setCode)
     }
+
+    fun setUser(user: User) {
+        this.user = user
+    }
+
+    fun getUser(): User = user
 
     fun isLoggedFb(): Boolean = facebookApi.isLogged()
 
