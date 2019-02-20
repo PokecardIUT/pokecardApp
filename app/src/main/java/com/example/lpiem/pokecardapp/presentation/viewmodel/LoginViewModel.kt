@@ -1,4 +1,4 @@
-package com.example.lpiem.pokecardapp.presentation.presenter
+package com.example.lpiem.pokecardapp.presentation.viewmodel
 
 import android.os.Bundle
 import android.util.Log

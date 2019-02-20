@@ -6,18 +6,16 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.data.model.User.User
 import com.example.lpiem.pokecardapp.presentation.navigator.Navigator
-import com.example.lpiem.pokecardapp.presentation.presenter.RankingViewModel
+import com.example.lpiem.pokecardapp.presentation.viewmodel.RankingViewModel
 import com.example.lpiem.pokecardapp.presentation.ui.adapter.RankingAdapter
 import com.example.lpiem.pokecardapp.presentation.ui.fragment.base.BaseFragment
 import com.example.lpiem.pokecardapp.presentation.ui.view.RankingCallback
 import kotlinx.android.synthetic.main.fragment_user_list.*
-import kotlin.reflect.KClass
 
 
 class RankingFragment : BaseFragment<RankingViewModel>(), RankingCallback {

@@ -1,6 +1,5 @@
 package com.example.lpiem.pokecardapp.presentation.ui.fragment
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +9,7 @@ import androidx.lifecycle.Observer
 import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.data.model.User.User
 import com.example.lpiem.pokecardapp.presentation.navigator.Navigator
-import com.example.lpiem.pokecardapp.presentation.presenter.AccountViewModel
+import com.example.lpiem.pokecardapp.presentation.viewmodel.AccountViewModel
 import com.example.lpiem.pokecardapp.presentation.ui.activity.LoginActivity
 import com.example.lpiem.pokecardapp.presentation.ui.fragment.base.BaseFragment
 import com.example.lpiem.pokecardapp.presentation.ui.view.AccountCallback

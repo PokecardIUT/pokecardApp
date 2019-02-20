@@ -1,12 +1,10 @@
-package com.example.lpiem.pokecardapp.presentation.presenter
+package com.example.lpiem.pokecardapp.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.lpiem.pokecardapp.PokeApplication
-import com.example.lpiem.pokecardapp.data.model.Deck.SetsItem
 import com.example.lpiem.pokecardapp.data.model.User.User
-import com.example.lpiem.pokecardapp.presentation.ui.view.SetsListCallback
 
 class AccountViewModel: ViewModel() {
     var repo = PokeApplication.getInstance().repository

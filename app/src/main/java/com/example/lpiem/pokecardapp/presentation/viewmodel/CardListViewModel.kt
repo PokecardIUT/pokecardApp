@@ -1,4 +1,4 @@
-package com.example.lpiem.pokecardapp.presentation.presenter
+package com.example.lpiem.pokecardapp.presentation.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import com.example.lpiem.pokecardapp.PokeApplication
 import com.example.lpiem.pokecardapp.data.model.SetCard.Card
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
-import com.example.lpiem.pokecardapp.presentation.ui.view.CardListCallback
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
