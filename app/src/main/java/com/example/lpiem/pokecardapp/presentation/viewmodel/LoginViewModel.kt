@@ -41,6 +41,7 @@ class LoginViewModel: ViewModel() {
                 if(response.body()?.success != null){
                     val user = User()
                     user.name = username
+                    user.token = response.body()?.token?.token
                     repository.setUser(user)
                     userLiveData.postValue(user)
                 } else {

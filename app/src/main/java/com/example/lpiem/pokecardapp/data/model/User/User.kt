@@ -4,5 +4,6 @@ data class User (
     var name:String? = null,
     var email:String? =null,
     var level:Int? = null,
-    var nbWin:Int? = null
+    var nbWin:Int? = null,
+    var token:String? = null
 )
