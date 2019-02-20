@@ -1,6 +1,7 @@
 package com.example.lpiem.pokecardapp.data.manager.api
 
 import com.example.lpiem.pokecardapp.BuildConfig
+import com.example.lpiem.pokecardapp.data.model.Deck.Deck
 import com.example.lpiem.pokecardapp.data.model.Login.Login
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -37,5 +38,10 @@ class PokeCardApiImpl : PokeCardApi {
 
     override fun connexionWithEmail(username: String, password: String): Call<Login> {
         return pokeCardApi.connexionWithEmail(username, password)
+    }
+
+
+    override fun getSets(accessToken: String): Call<Deck> {
+        return pokeCardApi.getSets(accessToken)
     }
 }
