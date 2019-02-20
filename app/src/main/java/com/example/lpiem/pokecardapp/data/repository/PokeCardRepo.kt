@@ -18,6 +18,9 @@ class PokeCardRepo{
         return pokeCardApi.connexionWithEmail(username,password)
     }
 
+    fun connexionWithService(username: String): Call<Login>{
+        return pokeCardApi.connexionWithService(username)
+    }
 
     fun getSets(): Call<Deck>{
         return pokeCardApi.getSets(user.token!!)

@@ -15,7 +15,6 @@ import rx.android.schedulers.AndroidSchedulers
 import rx.schedulers.Schedulers
 
 class PokeCardApiImpl : PokeCardApi {
-
     var pokeCardApi: PokeCardApi
 
     init {
@@ -39,6 +38,10 @@ class PokeCardApiImpl : PokeCardApi {
 
     override fun connexionWithEmail(username: String, password: String): Call<Login> {
         return pokeCardApi.connexionWithEmail(username, password)
+    }
+
+    override fun connexionWithService(username: String): Call<Login> {
+        return pokeCardApi.connexionWithService(username)
     }
 
     override fun getSets(accessToken: String): Call<Deck> {

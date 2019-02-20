@@ -72,6 +72,9 @@ class LoginViewModel: ViewModel() {
 
     fun isLoggedFb() { this.isLoggedFbLiveDate.postValue(repository.isLoggedFb()) }
 
+    fun getToken(username: String){
+        repository.connexionWithService(username)
+    }
 
     fun getInfoFb(token: AccessToken) {
         val request = GraphRequest.newMeRequest(
@@ -83,6 +86,7 @@ class LoginViewModel: ViewModel() {
                 user.name = `object`.getString("name")
                 user.email = `object`.getString("email")
                 user.name = user.name!!.split(" ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[0]
+                this.getToken(user.email!!)
                 this.userLiveData.postValue(user)
 
             } catch (e: JSONException) {
