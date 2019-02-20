@@ -26,7 +26,7 @@ class PokeCardRepo{
     }
 
     fun getCardBySets(setCode: String): Call<SetCard>{
-        return pokemonTCGApi.getCardBySets(setCode)
+        return pokeCardApi.getCardBySets(setCode,user.token!!)
     }
 
     fun setUser(user: User) {

@@ -36,8 +36,4 @@ class PokemonTCGApiImpl {
     fun getSets(): Call<Deck> {
         return pokemonTCGClient.getSets()
     }
-
-    fun getCardBySets(setCode: String): Call<SetCard>{
-        return pokemonTCGClient.getCardBySets(setCode)
-    }
 }

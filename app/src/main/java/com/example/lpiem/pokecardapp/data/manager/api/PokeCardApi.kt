@@ -11,6 +11,7 @@ interface PokeCardApi {
     @FormUrlEncoded
     fun connexionWithEmail(@Field("username") username: String,
                            @Field("password") password: String): Call<Login>
-    /*@GET("/api/cards/{setCode}")
-    fun getCardBySets(@Path("setCode") setCode: String): Call<SetCard>*/
+
+    @GET("/api/cards/{setCode}/all")
+    fun getCardBySets(@Path("setCode") setCode: String, @Query("access_token") accessToken: String): Call<SetCard>
 }
