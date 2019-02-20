@@ -8,8 +8,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface PokemonTCGApi {
-    @GET("/v1/sets")
-    fun getSets(): Call<Deck>
     @GET("v1/cards")
     fun getCardBySets(@Query("setCode") setCode: String): Call<SetCard>
 }

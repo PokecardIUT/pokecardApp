@@ -22,7 +22,7 @@ class PokeCardRepo{
 
 
     fun getSets(): Call<Deck>{
-        return pokemonTCGApi.getSets()
+        return pokeCardApi.getSets(user.token!!)
     }
 
     fun getCardBySets(setCode: String): Call<SetCard>{
