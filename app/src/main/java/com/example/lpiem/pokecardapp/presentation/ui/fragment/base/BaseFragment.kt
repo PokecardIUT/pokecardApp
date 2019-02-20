@@ -3,9 +3,8 @@ package com.example.lpiem.pokecardapp.presentation.ui.fragment.base
 import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import com.example.lpiem.pokecardapp.presentation.presenter.factory.ViewModelFactory
+import com.example.lpiem.pokecardapp.presentation.viewmodel.factory.ViewModelFactory
 import kotlin.reflect.KClass
 
 abstract class BaseFragment<T : ViewModel>: Fragment() {

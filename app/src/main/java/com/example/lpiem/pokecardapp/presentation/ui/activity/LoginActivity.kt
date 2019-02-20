@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -13,16 +12,13 @@ import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.data.model.ErrorMessage
 import com.example.lpiem.pokecardapp.data.model.User.User
 import com.example.lpiem.pokecardapp.presentation.ui.view.LoginCallback
-import com.example.lpiem.pokecardapp.presentation.presenter.LoginViewModel
-import com.example.lpiem.pokecardapp.presentation.presenter.factory.ViewModelFactory
+import com.example.lpiem.pokecardapp.presentation.viewmodel.LoginViewModel
+import com.example.lpiem.pokecardapp.presentation.viewmodel.factory.ViewModelFactory
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.tasks.Task
 import kotlinx.android.synthetic.main.activity_connection.*
 
 

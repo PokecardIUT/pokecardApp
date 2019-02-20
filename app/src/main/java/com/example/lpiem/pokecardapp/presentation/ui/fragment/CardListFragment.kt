@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.data.model.SetCard.Card
 import com.example.lpiem.pokecardapp.presentation.navigator.Navigator
-import com.example.lpiem.pokecardapp.presentation.presenter.CardListViewModel
+import com.example.lpiem.pokecardapp.presentation.viewmodel.CardListViewModel
 import com.example.lpiem.pokecardapp.presentation.ui.adapter.CardListAdapter
 import com.example.lpiem.pokecardapp.presentation.ui.fragment.base.BaseFragment
 import com.example.lpiem.pokecardapp.presentation.ui.view.CardListCallback

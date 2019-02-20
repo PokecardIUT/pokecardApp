@@ -1,12 +1,12 @@
-package com.example.lpiem.pokecardapp.presentation.presenter.factory
+package com.example.lpiem.pokecardapp.presentation.viewmodel.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.lpiem.pokecardapp.presentation.presenter.AccountViewModel
-import com.example.lpiem.pokecardapp.presentation.presenter.CardListViewModel
-import com.example.lpiem.pokecardapp.presentation.presenter.LoginViewModel
-import com.example.lpiem.pokecardapp.presentation.presenter.RankingViewModel
-import com.example.lpiem.pokecardapp.presentation.presenter.SetsListViewModel
+import com.example.lpiem.pokecardapp.presentation.viewmodel.AccountViewModel
+import com.example.lpiem.pokecardapp.presentation.viewmodel.CardListViewModel
+import com.example.lpiem.pokecardapp.presentation.viewmodel.LoginViewModel
+import com.example.lpiem.pokecardapp.presentation.viewmodel.RankingViewModel
+import com.example.lpiem.pokecardapp.presentation.viewmodel.SetsListViewModel
 
 class ViewModelFactory: ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

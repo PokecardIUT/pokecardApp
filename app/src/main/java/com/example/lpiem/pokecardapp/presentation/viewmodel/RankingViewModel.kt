@@ -1,4 +1,4 @@
-package com.example.lpiem.pokecardapp.presentation.presenter
+package com.example.lpiem.pokecardapp.presentation.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
