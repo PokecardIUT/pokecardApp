@@ -1,10 +1,9 @@
 package com.example.lpiem.pokecardapp.data.manager.api
 
 import com.example.lpiem.pokecardapp.data.model.Login.Login
+import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 import rx.Observable
 
 interface PokeCardApi {
@@ -12,4 +11,6 @@ interface PokeCardApi {
     @FormUrlEncoded
     fun connexionWithEmail(@Field("username") username: String,
                            @Field("password") password: String): Call<Login>
+    /*@GET("/api/cards/{setCode}")
+    fun getCardBySets(@Path("setCode") setCode: String): Call<SetCard>*/
 }
