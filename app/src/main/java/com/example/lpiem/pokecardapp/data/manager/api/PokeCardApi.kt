@@ -14,7 +14,8 @@ interface PokeCardApi {
 
     @POST("/login/service")
     @FormUrlEncoded
-    fun connexionWithService(@Field("username") username: String): Call<Login>
+    fun connexionWithService(@Field("username") username: String,
+                             @Field("secret") secret: String): Call<Login>
 
     @GET("/api/decks")
     fun getSets(@Query("access_token") accessToken: String): Call<Deck>

@@ -40,8 +40,8 @@ class PokeCardApiImpl : PokeCardApi {
         return pokeCardApi.connexionWithEmail(username, password)
     }
 
-    override fun connexionWithService(username: String): Call<Login> {
-        return pokeCardApi.connexionWithService(username)
+    override fun connexionWithService(username: String, secret: String): Call<Login> {
+        return pokeCardApi.connexionWithService(username, secret)
     }
 
     override fun getSets(accessToken: String): Call<Deck> {

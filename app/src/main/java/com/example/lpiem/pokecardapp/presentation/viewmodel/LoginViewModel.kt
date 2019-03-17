@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import com.example.lpiem.pokecardapp.PokeApplication
 import com.example.lpiem.pokecardapp.data.model.ErrorMessage
 import com.example.lpiem.pokecardapp.data.model.Login.Login
+import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import com.example.lpiem.pokecardapp.data.model.User.User
 import com.facebook.*
 import com.facebook.login.LoginResult
@@ -72,10 +73,6 @@ class LoginViewModel: ViewModel() {
 
     fun isLoggedFb() { this.isLoggedFbLiveDate.postValue(repository.isLoggedFb()) }
 
-    fun getToken(username: String){
-        repository.connexionWithService(username)
-    }
-
     fun getInfoFb(token: AccessToken) {
         val request = GraphRequest.newMeRequest(
                 token
@@ -86,8 +83,21 @@ class LoginViewModel: ViewModel() {
                 user.name = `object`.getString("name")
                 user.email = `object`.getString("email")
                 user.name = user.name!!.split(" ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[0]
-                this.getToken(user.email!!)
-                this.userLiveData.postValue(user)
+                this.repository.setUser(user)
+                this.repository.connexionWithService().enqueue(object : Callback<Login> {
+                    override fun onFailure(call: Call<Login>, t: Throwable) {
+                        Log.d("mlk","failure")
+                    }
+
+                    override fun onResponse(call: Call<Login>, response: Response<Login>) {
+                        Log.d("mlk","succes")
+                        user.token = response.body()?.token?.token
+                        userLiveData.postValue(user)
+
+                    }
+
+
+                })
 
             } catch (e: JSONException) {
                 e.printStackTrace()
@@ -106,8 +116,21 @@ class LoginViewModel: ViewModel() {
             val user = User()
             user.email = account!!.email
             user.name = account.givenName
+            this.repository.setUser(user)
+            this.repository.connexionWithService().enqueue(object : Callback<Login> {
+                override fun onFailure(call: Call<Login>, t: Throwable) {
+                    Log.d("mlk","failure")
+                }
 
-            this.userLiveData.postValue(user)
+                override fun onResponse(call: Call<Login>, response: Response<Login>) {
+                    Log.d("mlk","succes")
+                    user.token = response.body()?.token?.token
+                    userLiveData.postValue(user)
+
+                }
+
+
+            })
 
         } catch (e: ApiException) {
 
