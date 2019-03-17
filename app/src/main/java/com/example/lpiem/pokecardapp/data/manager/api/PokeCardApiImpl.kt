@@ -3,6 +3,7 @@ package com.example.lpiem.pokecardapp.data.manager.api
 import com.example.lpiem.pokecardapp.BuildConfig
 import com.example.lpiem.pokecardapp.data.model.Deck.Deck
 import com.example.lpiem.pokecardapp.data.model.Login.Login
+import com.example.lpiem.pokecardapp.data.model.SetCard.Card
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -47,6 +48,10 @@ class PokeCardApiImpl : PokeCardApi {
 
     override fun getCardBySets(setCode: String, accessToken: String): Call<SetCard> {
        return pokeCardApi.getCardBySets(setCode,accessToken)
+    }
+
+    override fun getRandomCard(username: String, id: String, pageSize: String, page: String, nbCard: String, accessToken: String): Call<SetCard> {
+        return pokeCardApi.getRandomCard(username, id, pageSize, page, nbCard, accessToken)
     }
 
     

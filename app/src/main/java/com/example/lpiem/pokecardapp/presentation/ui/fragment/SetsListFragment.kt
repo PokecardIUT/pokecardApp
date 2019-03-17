@@ -61,7 +61,7 @@ class SetsListFragment() : SetsListCallback, BaseFragment<SetsListViewModel>() {
     }
 
     private fun onSetClick(set: SetsItem){
-        navigator.displayCardList(set.code!!)
+        navigator.displayShop(set.code!!)
     }
 
     companion object {
