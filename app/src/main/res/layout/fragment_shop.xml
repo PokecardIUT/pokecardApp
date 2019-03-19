@@ -1,61 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/card1"
-        android:layout_width="@dimen/adapter_card_list_card_width"
-        android:layout_height="@dimen/adapter_card_list_card_height"
-        android:layout_marginTop="@dimen/adapter_card_list_card_margin_top"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/card_hide"
-        tools:srcCompat="@mipmap/card_hide" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="220dp"
+        android:gravity="center"
+        android:text="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/card2"
-        android:layout_width="@dimen/adapter_card_list_card_width"
+        android:layout_width="0dp"
         android:layout_height="@dimen/adapter_card_list_card_height"
-        android:layout_marginTop="@dimen/adapter_card_list_card_margin_top"
-        app:layout_constraintStart_toEndOf="@id/card1"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toStartOf="@+id/card3"
+        app:layout_constraintStart_toEndOf="@+id/card1"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/card_hide"
-        tools:srcCompat="@mipmap/card_hide" />
+        app:layout_constraintVertical_bias="0.865"
+        app:srcCompat="@mipmap/card_hide_silver"
+        tools:srcCompat="@mipmap/card_hide_silver" />
 
     <ImageView
         android:id="@+id/card3"
-        android:layout_width="@dimen/adapter_card_list_card_width"
+        android:layout_width="0dp"
         android:layout_height="@dimen/adapter_card_list_card_height"
-        android:layout_marginTop="@dimen/adapter_card_list_card_margin_top"
-        app:layout_constraintStart_toEndOf="@id/card2"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/card2"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/card_hide"
-        tools:srcCompat="@mipmap/card_hide" />
+        app:layout_constraintVertical_bias="0.865"
+        app:srcCompat="@mipmap/card_hide_gold"
+        tools:srcCompat="@mipmap/card_hide_gold" />
+
+    <ImageView
+        android:id="@+id/card1"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/adapter_card_list_card_height"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/card2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.865"
+        app:srcCompat="@mipmap/card_hide_bronze"
+        tools:srcCompat="@mipmap/card_hide_bronze" />
 
     <TextView
-        android:layout_width="@dimen/adapter_card_list_card_width"
-        android:layout_height="25dp"
-        android:layout_marginTop="@dimen/adapter_card_list_card_margin_top"
-        android:text="1"
+        android:id="@+id/textView2"
+        android:layout_width="115dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="220dp"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/card1" />
-
-    <TextView
-        android:layout_width="@dimen/adapter_card_list_card_width"
-        android:layout_height="25dp"
-        android:layout_marginTop="@dimen/adapter_card_list_card_margin_top"
-        android:text="3"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/card2" />
-
-    <TextView
-        android:layout_width="@dimen/adapter_card_list_card_width"
-        android:layout_height="25dp"
-        android:layout_marginTop="@dimen/adapter_card_list_card_margin_top"
         android:text="5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toEndOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="148dp"
+        android:layout_marginBottom="220dp"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@id/card3" />
-</LinearLayout>
+        android:text="3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView" />
+</androidx.constraintlayout.widget.ConstraintLayout>

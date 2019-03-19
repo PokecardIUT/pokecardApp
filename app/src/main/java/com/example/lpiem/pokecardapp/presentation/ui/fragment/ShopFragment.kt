@@ -13,6 +13,13 @@ import com.example.lpiem.pokecardapp.presentation.ui.fragment.base.BaseFragment
 import com.example.lpiem.pokecardapp.presentation.viewmodel.ShopViewModel
 import kotlinx.android.synthetic.main.fragment_shop.*
 import kotlin.concurrent.timerTask
+import android.content.DialogInterface
+import android.app.AlertDialog
+import android.util.Log
+import android.widget.ImageView
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.alert_cards.*
+
 
 private const val INTENT_SET_ID_EXTRA = "INTENT_SET_ID_EXTRA"
 
@@ -20,7 +27,7 @@ class ShopFragment : BaseFragment<ShopViewModel>(), View.OnClickListener {
     private lateinit var navigator: Navigator
     private lateinit var id: String
     private lateinit var nbCard: String
-    private lateinit var cards: MutableList<Card>
+    private var cards: MutableList<Card> = mutableListOf()
     override val viewModelClass = ShopViewModel::class
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,7 +42,9 @@ class ShopFragment : BaseFragment<ShopViewModel>(), View.OnClickListener {
 
         val updateCardList = Observer<List<Card>>{
             postList -> cards.addAll(postList)
+            showCards()
         }
+
 
         viewModel.getCardList().observe(this, updateCardList)
     }
@@ -47,22 +56,38 @@ class ShopFragment : BaseFragment<ShopViewModel>(), View.OnClickListener {
 
     override fun onClick(p0: View?) {
         when(p0?.id) {
-            R.id.card1 -> nbCard = "1"
-            R.id.card2 -> nbCard = "3"
-            R.id.card3 -> nbCard = "5"
+            R.id.card1 -> {
+                nbCard = "1"
+                viewModel.getRandomCard(id, nbCard)
+            }
+            R.id.card2 ->  {
+                nbCard = "3"
+                viewModel.getRandomCard(id, nbCard)
+            }
+            R.id.card3 ->  {
+                nbCard = "5"
+                viewModel.getRandomCard(id, nbCard)
+            }
         }
-        randomize()
     }
 
-    private fun randomize() {
-        if(!nbCard.isNullOrBlank()) {
-            viewModel.getRandomCard(id, nbCard)
-            var s = ""
-            for(card in cards) {
-                s += card.name + ", "
+    private fun showCards() {
+        val alertadd = AlertDialog.Builder(context)
+        val factory = LayoutInflater.from(context)
+        val view = factory.inflate(R.layout.alert_cards, null)
+        alertadd.setView(view)
+        val cardImageView: ImageView = view.findViewById(R.id.dialog_imageview)
+        Log.d("cards", cards[0].toString())
+        Picasso.get().load(cards[0].imageUrlHiRes).placeholder(R.mipmap.card_hide).into(cardImageView)
+        var i = 0
+        alertadd.setPositiveButton("Next") {
+            _, _ ->
+            ++i
+            if (i < cards.count()) {
+                Picasso.get().load(cards[i].imageUrlHiRes).placeholder(R.mipmap.card_hide).into(cardImageView)
             }
-            Toast.makeText(context, s, Toast.LENGTH_SHORT).show()
         }
+        alertadd.show()
     }
 
     companion object {
