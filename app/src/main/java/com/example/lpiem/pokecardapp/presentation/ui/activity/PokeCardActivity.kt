@@ -43,6 +43,11 @@ class PokeCardActivity : AppCompatActivity(), BottomNavigationView.OnNavigationI
                 title = getString(R.string.bottom_navigation_ranking)
             }
 
+            R.id.bottom_navigation_my_sets -> {
+                navigator.displaySetsList("shop")
+                title = getString(R.string.bottom_navigation_my_sets)
+            }
+
         }
         return false
     }

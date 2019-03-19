@@ -50,7 +50,7 @@ class PokeCardApiImpl : PokeCardApi {
        return pokeCardApi.getCardBySets(setCode,accessToken)
     }
 
-    override fun getRandomCard(username: String, id: String, pageSize: String, page: String, nbCard: String, accessToken: String): Call<SetCard> {
+    override fun getRandomCard(username: String, id: String, pageSize: String, page: String, nbCard: String, accessToken: String): Call<List<Card>> {
         return pokeCardApi.getRandomCard(username, id, pageSize, page, nbCard, accessToken)
     }
 

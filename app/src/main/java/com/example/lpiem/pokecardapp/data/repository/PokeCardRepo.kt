@@ -28,7 +28,7 @@ class PokeCardRepo{
         return pokeCardApi.getCardBySets(setCode,user.token!!)
     }
 
-    fun getRandomCard(id: String, nbCard: String): Call<SetCard>{
+    fun getRandomCard(id: String, nbCard: String): Call<List<Card>>{
         return pokeCardApi.getRandomCard(user.name!!, id, "1000", "1", nbCard, user.token!!)
     }
 

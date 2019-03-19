@@ -2,6 +2,7 @@ package com.example.lpiem.pokecardapp.presentation.ui.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,7 +18,7 @@ import com.example.lpiem.pokecardapp.presentation.ui.view.SetsListCallback
 import kotlinx.android.synthetic.main.fragment_sets_list.*
 
 
-class SetsListFragment() : SetsListCallback, BaseFragment<SetsListViewModel>() {
+class SetsListFragment(val identifier: String = "") : SetsListCallback, BaseFragment<SetsListViewModel>() {
 
     private lateinit var adapter: SetsListAdapter
     private lateinit var navigator: Navigator
@@ -61,12 +62,17 @@ class SetsListFragment() : SetsListCallback, BaseFragment<SetsListViewModel>() {
     }
 
     private fun onSetClick(set: SetsItem){
-        navigator.displayShop(set.code!!)
+        if(this.identifier == "shop") {
+            navigator.displayShop(set.code!!)
+        }
+        else {
+            navigator.displayCardList(set.code!!)
+        }
     }
 
     companion object {
 
-        fun newInstance(): SetsListFragment =  SetsListFragment()
+        fun newInstance(identifier: String = ""): SetsListFragment =  SetsListFragment(identifier)
 
 
     }

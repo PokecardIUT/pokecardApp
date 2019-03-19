@@ -26,5 +26,5 @@ interface PokeCardApi {
                       @Query("pageSize") pageSize: String,
                       @Query("page") page: String,
                       @Query("nbCard") nbCard: String,
-                      @Query("access_token") accessToken: String): Call<SetCard>
+                      @Query("access_token") accessToken: String): Call<List<Card>>
 }
