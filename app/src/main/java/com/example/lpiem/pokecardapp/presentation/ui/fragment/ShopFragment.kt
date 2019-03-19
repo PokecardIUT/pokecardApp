@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.data.model.SetCard.Card
@@ -12,10 +11,9 @@ import com.example.lpiem.pokecardapp.presentation.navigator.Navigator
 import com.example.lpiem.pokecardapp.presentation.ui.fragment.base.BaseFragment
 import com.example.lpiem.pokecardapp.presentation.viewmodel.ShopViewModel
 import kotlinx.android.synthetic.main.fragment_shop.*
-import kotlin.concurrent.timerTask
-import android.content.DialogInterface
 import android.app.AlertDialog
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.alert_cards.*
@@ -44,7 +42,6 @@ class ShopFragment : BaseFragment<ShopViewModel>(), View.OnClickListener {
             postList -> cards.addAll(postList)
             showCards()
         }
-
 
         viewModel.getCardList().observe(this, updateCardList)
     }
@@ -77,14 +74,26 @@ class ShopFragment : BaseFragment<ShopViewModel>(), View.OnClickListener {
         val view = factory.inflate(R.layout.alert_cards, null)
         alertadd.setView(view)
         val cardImageView: ImageView = view.findViewById(R.id.dialog_imageview)
-        Log.d("cards", cards[0].toString())
+        val prev: Button = view.findViewById(R.id.prev)
+        val next: Button = view.findViewById(R.id.next)
+        var index = 0
         Picasso.get().load(cards[0].imageUrlHiRes).placeholder(R.mipmap.card_hide).into(cardImageView)
-        var i = 0
-        alertadd.setPositiveButton("Next") {
+        alertadd.setPositiveButton("OK") {
             _, _ ->
-            ++i
-            if (i < cards.count()) {
-                Picasso.get().load(cards[i].imageUrlHiRes).placeholder(R.mipmap.card_hide).into(cardImageView)
+            cards.clear()
+        }
+        next.setOnClickListener {
+            if (index + 1 < cards.count()) {
+                ++index
+                Log.d("cardsRandom", cards[index].toString())
+                Picasso.get().load(cards[index].imageUrlHiRes).placeholder(R.mipmap.card_hide).into(cardImageView)
+            }
+        }
+        prev.setOnClickListener {
+            if (index - 1 >= 0) {
+                --index
+                Log.d("cardsRandom", cards[index].toString())
+                Picasso.get().load(cards[index].imageUrlHiRes).placeholder(R.mipmap.card_hide).into(cardImageView)
             }
         }
         alertadd.show()
