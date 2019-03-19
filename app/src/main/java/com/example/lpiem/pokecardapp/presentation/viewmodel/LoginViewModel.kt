@@ -1,6 +1,9 @@
 package com.example.lpiem.pokecardapp.presentation.viewmodel
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -32,6 +35,9 @@ class LoginViewModel: ViewModel() {
             this.error.postValue(ErrorMessage("Un champs n'a pas été remplis"))
             return
         }
+
+
+
 
         repository.connexionWithEmail(username,password).enqueue(object : Callback<Login> {
             override fun onFailure(call: Call<Login>, t: Throwable) {
@@ -72,6 +78,13 @@ class LoginViewModel: ViewModel() {
 
     fun isLoggedFb() { this.isLoggedFbLiveDate.postValue(repository.isLoggedFb()) }
 
+    fun updateSharedPreferences(context: Context, user: User) {
+        repository.updateSharedPreferences(context, user)
+    }
+
+    fun getSharedPreferences(context: Context): SharedPreferences? {
+        return repository.getSharedPreferences(context)
+    }
 
     fun getInfoFb(token: AccessToken) {
         val request = GraphRequest.newMeRequest(

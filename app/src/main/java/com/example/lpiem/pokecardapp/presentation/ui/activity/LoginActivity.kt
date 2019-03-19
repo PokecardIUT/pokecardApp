@@ -1,5 +1,6 @@
 package com.example.lpiem.pokecardapp.presentation.ui.activity
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -49,6 +50,7 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
     }
 
 
+    @SuppressLint("ApplySharedPref")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_connection)
@@ -68,14 +70,17 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
             }
         }
 
+        if(viewModel.getSharedPreferences(this)?.getString("token", "token") != "token") {
+            goToPokeCardActivity()
+        }
         viewModel.isLoggedFb()
 
         val updateUser = Observer<User> { postUser ->
             if(postUser != null){
+                viewModel.updateSharedPreferences(this, postUser)
                 goToPokeCardActivity()
             }
         }
-
         val updateError = Observer<ErrorMessage> { postError ->
             if(postError != null){
                 showError(postError.message!!)
