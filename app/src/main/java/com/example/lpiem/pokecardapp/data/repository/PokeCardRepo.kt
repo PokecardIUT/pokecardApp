@@ -5,6 +5,7 @@ import com.example.lpiem.pokecardapp.data.manager.api.FacebookApiImpl
 import com.example.lpiem.pokecardapp.data.manager.api.PokeCardApiImpl
 import com.example.lpiem.pokecardapp.data.model.Deck.Deck
 import com.example.lpiem.pokecardapp.data.model.Login.Login
+import com.example.lpiem.pokecardapp.data.model.Login.ResultCode
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import com.example.lpiem.pokecardapp.data.model.User.User
 import retrofit2.Call
@@ -18,6 +19,9 @@ class PokeCardRepo{
         return pokeCardApi.connexionWithEmail(username,password)
     }
 
+    fun signup(username:String, password:String): Call<ResultCode> {
+        return pokeCardApi.signup(username,password)
+    }
 
     fun getSets(): Call<Deck>{
         return pokeCardApi.getSets(user.token!!)

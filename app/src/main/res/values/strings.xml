@@ -11,9 +11,11 @@
     <string name="adapter_sets_list_realese_date">Realese date</string>
     <string name="adapter_sets_list_number_card">Nb card</string>
     <string name="adapter_sets_list_imageview">Sets image</string>
-    <string name="login_hint_text_password">Password</string>
+    <string name="login_hint_text_password">Mot de passe</string>
+    <string name="login_hint_text_password_confirm">Confirmer votre Mot de passe</string>
     <string name="login_hint_text_email">Email</string>
     <string name="login_text_connexion">CONNEXION</string>
+    <string name="login_text_signup">S\'INSCRIRE</string>
     <string name="bottom_navigation_search">Rechercher</string>
     <string name="bottom_navigation_my_sets">Mes decks</string>
     <string name="bottom_navigation_vs">Combat</string>

@@ -2,6 +2,7 @@ package com.example.lpiem.pokecardapp.data.manager.api
 
 import com.example.lpiem.pokecardapp.data.model.Deck.Deck
 import com.example.lpiem.pokecardapp.data.model.Login.Login
+import com.example.lpiem.pokecardapp.data.model.Login.ResultCode
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import retrofit2.Call
 import retrofit2.http.*
@@ -12,6 +13,10 @@ interface PokeCardApi {
     fun connexionWithEmail(@Field("username") username: String,
                            @Field("password") password: String): Call<Login>
 
+    @POST("/signup")
+    @FormUrlEncoded
+    fun signup(@Field("username") username: String,
+               @Field("password") password: String): Call<ResultCode>
    
     @GET("/api/decks")
     fun getSets(@Query("access_token") accessToken: String): Call<Deck>

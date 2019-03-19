@@ -61,6 +61,7 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
         buttonConnectionWithFb.setReadPermissions("public_profile", "email")
         buttonConnectionWithFb.setOnClickListener(this)
         buttonConnectionWithGoogle.setOnClickListener(this)
+        buttonSignup.setOnClickListener(this)
 
         val userLoggedFb = Observer<Boolean> { postBool ->
             if(postBool){
@@ -98,7 +99,7 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.buttonConnectWithEmail -> {
+            R.id.buttonSignUpActivity -> {
                 viewModel.connexionWithEmail(usernameField.editText?.text.toString(), passwordField.editText?.text.toString())
             }
             R.id.buttonConnectionWithFb -> {
@@ -107,6 +108,10 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
             R.id.buttonConnectionWithGoogle -> {
                 val signInIntent = mGoogleSignInClient?.signInIntent
                 startActivityForResult(signInIntent, BUTTON_GOOGLE)
+            }
+            R.id.buttonSignup -> {
+                val signupActivity = Intent(this, SignUpActivity::class.java)
+                startActivity(signupActivity)
             }
         }
 
