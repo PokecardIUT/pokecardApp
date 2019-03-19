@@ -2,11 +2,7 @@ package com.example.lpiem.pokecardapp.presentation.viewmodel.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.lpiem.pokecardapp.presentation.viewmodel.AccountViewModel
-import com.example.lpiem.pokecardapp.presentation.viewmodel.CardListViewModel
-import com.example.lpiem.pokecardapp.presentation.viewmodel.LoginViewModel
-import com.example.lpiem.pokecardapp.presentation.viewmodel.RankingViewModel
-import com.example.lpiem.pokecardapp.presentation.viewmodel.SetsListViewModel
+import com.example.lpiem.pokecardapp.presentation.viewmodel.*
 
 class ViewModelFactory: ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -24,6 +20,9 @@ class ViewModelFactory: ViewModelProvider.Factory {
         }
         if(modelClass.isAssignableFrom(RankingViewModel::class.java)){
             return RankingViewModel() as T
+        }
+        if(modelClass.isAssignableFrom(MySetsViewModel::class.java)){
+            return MySetsViewModel() as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

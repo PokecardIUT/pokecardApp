@@ -13,11 +13,6 @@ class RankingViewModel: ViewModel() {
 
         val list: ArrayList<User> = ArrayList()
 
-        list.add(User("Theo","" , 50, 250))
-        list.add(User("Loic", "" , 150, 150))
-        list.add(User("Thomas","", 10, 15))
-        list.add(User("Morgane","", 5, 5))
-
         Collections.sort(list) { user1, user2 -> user1.level!!.compareTo(user2.level!!) }
         Collections.reverse(list)
         userList.postValue(list)

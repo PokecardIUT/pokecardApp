@@ -40,7 +40,7 @@ class LoginViewModel: ViewModel() {
             override fun onResponse(call: Call<Login>, response: Response<Login>) {
                 if(response.body()?.success != null){
                     val user = User()
-                    user.name = username
+                    user.username = username
                     user.token = response.body()?.token?.token
                     repository.setUser(user)
                     userLiveData.postValue(user)
@@ -79,10 +79,8 @@ class LoginViewModel: ViewModel() {
         ) { `object`, response ->
             Log.v("LoginActivity", response.toString())
             try {
-                val user = User()
-                user.name = `object`.getString("name")
-                user.email = `object`.getString("email")
-                user.name = user.name!!.split(" ".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[0]
+                var user = User()
+                user.username = `object`.getString("email")
                 this.userLiveData.postValue(user)
 
             } catch (e: JSONException) {
@@ -100,8 +98,7 @@ class LoginViewModel: ViewModel() {
         try {
             val account = completedTask.getResult<ApiException>(ApiException::class.java)
             val user = User()
-            user.email = account!!.email
-            user.name = account.givenName
+            user.username = account!!.email
 
             this.userLiveData.postValue(user)
 
