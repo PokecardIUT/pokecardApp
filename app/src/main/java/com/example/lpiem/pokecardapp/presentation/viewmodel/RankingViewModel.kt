@@ -17,7 +17,6 @@ class RankingViewModel: ViewModel() {
 
     var repo = PokeApplication.getInstance().repository
     var userList = MutableLiveData<List<User>>()
-    var users = MutableLiveData<List<User>>()
 
     fun getUsers() {
         repo.getUsers().enqueue(object : Callback<List<User>> {
@@ -29,12 +28,10 @@ class RankingViewModel: ViewModel() {
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
                 Log.d("mlk", response.body().toString())
 
-                users.postValue(response.body())
-
-                //val list: ArrayList<User> = users.value as ArrayList<User>
-                //list.sortWith(Comparator { user1, user2 -> user1.level!!.compareTo(user2.level!!) })
-                //list.reverse()
-                //userList.postValue(list)
+                val list: ArrayList<User> = ArrayList(response.body())
+                list.sortWith(Comparator { user1, user2 -> user1.level!!.compareTo(user2.level!!) })
+                list.reverse()
+                userList.postValue(list)
             }
         })
     }
