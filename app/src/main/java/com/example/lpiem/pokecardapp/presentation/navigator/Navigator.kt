@@ -9,8 +9,12 @@ class Navigator(fragmentManager: FragmentManager){
 
     private val fragmentManager: FragmentManager = fragmentManager
 
-    fun displaySetsList(identifier: String = ""){
-        fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, SetsListFragment.newInstance(identifier)).addToBackStack(null).commit()
+    fun displaySetsList(){
+        fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, SetsListFragment.newInstance()).commit()
+    }
+
+    fun displaySetsListShop(){
+        fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, SetsListFragment.newInstance("shop")).addToBackStack(null).commit()
     }
 
     fun displayCardList(setCode: String){
@@ -24,14 +28,14 @@ class Navigator(fragmentManager: FragmentManager){
     }
 
     fun displayAccount(){
-        fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, AccountFragment.newInstance()).addToBackStack(null).commit()
+        fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, AccountFragment.newInstance()).commit()
     }
 
     fun displayRanking(){
-        fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, RankingFragment.newInstance()).addToBackStack(null).commit()
+        fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, RankingFragment.newInstance()).commit()
     }
 
     fun displayMySets(){
-        fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, MySetsFragment.newInstance()).addToBackStack(null).commit()
+        fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, MySetsFragment.newInstance()).commit()
     }
 }
