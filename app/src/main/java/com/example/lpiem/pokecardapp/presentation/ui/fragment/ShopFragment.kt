@@ -106,7 +106,7 @@ class ShopFragment : BaseFragment<ShopViewModel>(), View.OnClickListener {
             _, _ ->
             cards.clear()
 
-            navigator.displaySetsList("shop")
+            navigator.displaySetsListShop()
         }
         next.setOnClickListener {
             if (index + 1 < cards.count()) {
