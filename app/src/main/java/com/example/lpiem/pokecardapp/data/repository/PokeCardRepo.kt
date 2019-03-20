@@ -6,6 +6,7 @@ import com.example.lpiem.pokecardapp.data.manager.api.PokeCardApiImpl
 import com.example.lpiem.pokecardapp.data.model.Deck.Deck
 import com.example.lpiem.pokecardapp.data.model.Login.Login
 import com.example.lpiem.pokecardapp.data.model.SetCard.Card
+import com.example.lpiem.pokecardapp.data.model.SetCard.CardsCount
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import com.example.lpiem.pokecardapp.data.model.User.User
 import retrofit2.Call
@@ -34,6 +35,10 @@ class PokeCardRepo{
 
     fun getRandomCard(id: String, nbCard: String): Call<List<Card>>{
         return pokeCardApi.getRandomCard(user.name!!, id, "1000", "1", nbCard, user.token!!)
+    }
+
+    fun getCardsCount(id: String): Call<CardsCount>{
+        return pokeCardApi.getCardsCount(user.name!!, id, "1000", "1", user.token!!)
     }
 
     fun setUser(user: User) {

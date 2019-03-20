@@ -17,8 +17,9 @@ import com.example.lpiem.pokecardapp.presentation.ui.fragment.base.BaseFragment
 import com.example.lpiem.pokecardapp.presentation.ui.view.SetsListCallback
 import kotlinx.android.synthetic.main.fragment_sets_list.*
 
+private const val INTENT_SHOP_EXTRA = "INTENT_SHOP_EXTRA"
 
-class SetsListFragment(val identifier: String = "") : SetsListCallback, BaseFragment<SetsListViewModel>() {
+class SetsListFragment() : SetsListCallback, BaseFragment<SetsListViewModel>() {
 
     private lateinit var adapter: SetsListAdapter
     private lateinit var navigator: Navigator
@@ -62,7 +63,7 @@ class SetsListFragment(val identifier: String = "") : SetsListCallback, BaseFrag
     }
 
     private fun onSetClick(set: SetsItem){
-        if(this.identifier == "shop") {
+        if(arguments?.getString(INTENT_SHOP_EXTRA)!! == "shop") {
             navigator.displayShop(set.code!!)
         }
         else {
@@ -72,7 +73,13 @@ class SetsListFragment(val identifier: String = "") : SetsListCallback, BaseFrag
 
     companion object {
 
-        fun newInstance(identifier: String = ""): SetsListFragment =  SetsListFragment(identifier)
+        fun newInstance(identifier: String = ""): SetsListFragment {
+            val fragment = SetsListFragment()
+            val args = Bundle()
+            args.putString(INTENT_SHOP_EXTRA,identifier)
+            fragment.arguments = args
+            return fragment
+        }
 
 
     }

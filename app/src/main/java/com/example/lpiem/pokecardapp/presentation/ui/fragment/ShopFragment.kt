@@ -12,11 +12,11 @@ import com.example.lpiem.pokecardapp.presentation.ui.fragment.base.BaseFragment
 import com.example.lpiem.pokecardapp.presentation.viewmodel.ShopViewModel
 import kotlinx.android.synthetic.main.fragment_shop.*
 import android.app.AlertDialog
-import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
+import com.example.lpiem.pokecardapp.data.model.SetCard.CardsCount
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.alert_cards.*
 
 private const val INTENT_SET_ID_EXTRA = "INTENT_SET_ID_EXTRA"
 
@@ -25,6 +25,7 @@ class ShopFragment : BaseFragment<ShopViewModel>(), View.OnClickListener {
     private lateinit var id: String
     private lateinit var nbCard: String
     private var cards: MutableList<Card> = mutableListOf()
+    private lateinit var cardsCount: CardsCount
     override val viewModelClass = ShopViewModel::class
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,6 +44,28 @@ class ShopFragment : BaseFragment<ShopViewModel>(), View.OnClickListener {
         }
 
         viewModel.getCardList().observe(this, updateCardList)
+
+        val updateCardsCount = Observer<CardsCount>{
+            postCount -> cardsCount = postCount
+            if(cardsCount.result!! > 5) {
+                card3.visibility = View.VISIBLE
+                tvCard3.visibility = View.VISIBLE
+            }
+            if(cardsCount.result!! > 3) {
+                card2.visibility = View.VISIBLE
+                tvCard2.visibility = View.VISIBLE
+            }
+            if(cardsCount.result!! > 1) {
+                card1.visibility = View.VISIBLE
+                tvCard1.visibility = View.VISIBLE
+            }
+            if(cardsCount.result!! == 0) {
+                tvAllCards.visibility = View.VISIBLE
+            }
+        }
+
+        viewModel.getCardsCount().observe(this, updateCardsCount)
+        viewModel.getCardsCount(id)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -68,32 +91,38 @@ class ShopFragment : BaseFragment<ShopViewModel>(), View.OnClickListener {
     }
 
     private fun showCards() {
-        val alertadd = AlertDialog.Builder(context)
+        val alertAdd = AlertDialog.Builder(context)
         val factory = LayoutInflater.from(context)
         val view = factory.inflate(R.layout.alert_cards, null)
-        alertadd.setView(view)
+        alertAdd.setView(view)
         val cardImageView: ImageView = view.findViewById(R.id.dialog_imageview)
         val prev: Button = view.findViewById(R.id.prev)
         val next: Button = view.findViewById(R.id.next)
+        val nbCardLbl: TextView = view.findViewById(R.id.nbCardLbl)
         var index = 0
+        nbCardLbl.text = "${(index + 1)} / ${cards.count()}"
         Picasso.get().load(cards[0].imageUrlHiRes).placeholder(R.mipmap.card_hide).into(cardImageView)
-        alertadd.setPositiveButton("OK") {
+        alertAdd.setPositiveButton("OK") {
             _, _ ->
             cards.clear()
+
+            navigator.displaySetsList("shop")
         }
         next.setOnClickListener {
             if (index + 1 < cards.count()) {
                 ++index
                 Picasso.get().load(cards[index].imageUrlHiRes).placeholder(R.mipmap.card_hide).into(cardImageView)
+                nbCardLbl.text = "${(index + 1)} / ${cards.count()}"
             }
         }
         prev.setOnClickListener {
             if (index - 1 >= 0) {
                 --index
                 Picasso.get().load(cards[index].imageUrlHiRes).placeholder(R.mipmap.card_hide).into(cardImageView)
+                nbCardLbl.text = "${(index + 1)} / ${cards.count()}"
             }
         }
-        alertadd.show()
+        alertAdd.show()
     }
 
     companion object {
