@@ -9,15 +9,13 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/usernameField"
+        android:id="@+id/usernameSignUpField"
         style="@style/LoginTextField"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="24dp"
         app:hintTextAppearance="@style/LoginEditTextHint"
-        app:layout_constraintBottom_toTopOf="@+id/passwordField"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4">
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <EditText
             style="@style/LoginInputText"
@@ -30,13 +28,15 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordField"
+        android:id="@+id/passwordSignUpField"
         style="@style/LoginTextField"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
         app:hintTextAppearance="@style/LoginEditTextHint"
+        app:layout_constraintBottom_toTopOf="@+id/confirmPasswordField"
         app:layout_constraintStart_toEndOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/usernameField">
+        app:layout_constraintTop_toBottomOf="@+id/usernameSignUpField">
 
         <EditText
             style="@style/LoginInputText"
@@ -47,34 +47,23 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/buttonConnectWithEmail"
-        style="@style/LoginButton"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/button_radius"
-        android:text="@string/login_text_connexion"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/confirmPasswordField"
+        style="@style/LoginTextField"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:hintTextAppearance="@style/LoginEditTextHint"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/passwordSignUpField">
 
-    <com.google.android.gms.common.SignInButton
-        android:id="@+id/buttonConnectionWithGoogle"
-        style="@style/LoginButton"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonConnectionWithFb" />
+        <EditText
+            style="@style/LoginInputText"
+            android:hint="@string/login_hint_text_password_confirm"
+            android:inputType="textPassword"
+            android:textColorHint="@color/login_placeholder_color"
+            android:theme="@style/LoginMyEditText" />
 
-    <com.facebook.login.widget.LoginButton
-        android:id="@+id/buttonConnectionWithFb"
-        style="@style/LoginButton"
-        android:layout_marginTop="24dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 
     <ImageView
@@ -83,7 +72,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/usernameField"
+        app:layout_constraintTop_toTopOf="@+id/usernameSignUpField"
         app:srcCompat="@drawable/ic_email" />
 
     <ImageView
@@ -92,45 +81,56 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/passwordField"
+        app:layout_constraintTop_toTopOf="@+id/confirmPasswordField"
         app:srcCompat="@drawable/ic_lock" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        style="@style/LoginImageView"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/passwordSignUpField"
+        app:srcCompat="@drawable/ic_lock" />
+
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="200dp"
         android:layout_height="250dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/usernameField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/pokecardapp" />
 
-    <Button
-        android:id="@+id/buttonSignup"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:background="@null"
-        android:text="Premier connexion ?"
-        app:layout_constraintBottom_toTopOf="@+id/view"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="Inscription"
+        android:textColor="@color/text_signup"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/usernameSignUpField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonConnectWithEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:layout_constraintVertical_chainStyle="packed" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="0dp"
-        android:layout_height="2dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@color/line_separator"
-        app:layout_constraintBottom_toTopOf="@+id/buttonConnectionWithFb"
+    <Button
+        android:id="@+id/buttonSignUpActivity"
+        style="@style/LoginButton"
+        android:layout_height="46dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/button_radius"
+        android:text="@string/login_text_signup"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSignup" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
