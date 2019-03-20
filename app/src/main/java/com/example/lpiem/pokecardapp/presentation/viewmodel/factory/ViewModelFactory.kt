@@ -9,6 +9,9 @@ class ViewModelFactory: ViewModelProvider.Factory {
         if(modelClass.isAssignableFrom(LoginViewModel::class.java)){
             return LoginViewModel() as T
         }
+        if(modelClass.isAssignableFrom(SignUpViewModel::class.java)){
+            return SignUpViewModel() as T
+        }
         if(modelClass.isAssignableFrom(SetsListViewModel::class.java)){
             return SetsListViewModel() as T
         }

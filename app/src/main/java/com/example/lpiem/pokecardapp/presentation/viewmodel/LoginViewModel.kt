@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import com.example.lpiem.pokecardapp.PokeApplication
 import com.example.lpiem.pokecardapp.data.model.ErrorMessage
 import com.example.lpiem.pokecardapp.data.model.Login.Login
+import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import com.example.lpiem.pokecardapp.data.model.User.User
 import com.facebook.*
 import com.facebook.login.LoginResult
@@ -72,16 +73,32 @@ class LoginViewModel: ViewModel() {
 
     fun isLoggedFb() { this.isLoggedFbLiveDate.postValue(repository.isLoggedFb()) }
 
-
     fun getInfoFb(token: AccessToken) {
         val request = GraphRequest.newMeRequest(
                 token
         ) { `object`, response ->
             Log.v("LoginActivity", response.toString())
             try {
-                var user = User()
+                val user = User()
                 user.username = `object`.getString("email")
-                this.userLiveData.postValue(user)
+                this.repository.setUser(user)
+                this.repository.connexionWithService().enqueue(object : Callback<Login> {
+                    override fun onFailure(call: Call<Login>, t: Throwable) {
+                        Log.d("mlk","failure")
+                    }
+
+                    override fun onResponse(call: Call<Login>, response: Response<Login>) {
+                        if(response.body()?.success != null) {
+                            Log.d("mlk", "succes")
+                            user.token = response.body()?.token?.token
+                            userLiveData.postValue(user)
+                        } else {
+                            error.postValue(ErrorMessage("Erreur d'authentification"))
+                        }
+
+                    }
+
+                })
 
             } catch (e: JSONException) {
                 e.printStackTrace()
@@ -99,8 +116,24 @@ class LoginViewModel: ViewModel() {
             val account = completedTask.getResult<ApiException>(ApiException::class.java)
             val user = User()
             user.username = account!!.email
+            this.repository.setUser(user)
+            this.repository.connexionWithService().enqueue(object : Callback<Login> {
+                override fun onFailure(call: Call<Login>, t: Throwable) {
+                    Log.d("mlk","failure")
+                }
 
-            this.userLiveData.postValue(user)
+                override fun onResponse(call: Call<Login>, response: Response<Login>) {
+                    if(response.body()?.success != null) {
+                        Log.d("mlk", "succes")
+                        user.token = response.body()?.token?.token
+                        userLiveData.postValue(user)
+                    } else {
+                        error.postValue(ErrorMessage("Erreur d'authentification"))
+                    }
+                }
+
+
+            })
 
         } catch (e: ApiException) {
 
