@@ -8,6 +8,7 @@ import com.example.lpiem.pokecardapp.data.model.Login.Login
 import com.example.lpiem.pokecardapp.data.model.Login.ResultCode
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import com.example.lpiem.pokecardapp.data.model.User.User
+import com.example.lpiem.pokecardapp.data.model.User.UserResponse
 import retrofit2.Call
 
 class PokeCardRepo{
@@ -24,7 +25,7 @@ class PokeCardRepo{
     }
     
     fun connexionWithService(): Call<Login>{
-        return pokeCardApi.connexionWithService(this.user.email!!, "valid")
+        return pokeCardApi.connexionWithService(this.user.username!!, "valid")
     }
 
     fun getSets(): Call<Deck>{
@@ -40,6 +41,10 @@ class PokeCardRepo{
     }
 
     fun getUser(): User = user
+
+    fun retrieveUser(): Call<UserResponse>{
+        return pokeCardApi.getUser(this.user.token!!,this.user.username!!)
+    }
 
     fun isLoggedFb(): Boolean = facebookApi.isLogged()
 

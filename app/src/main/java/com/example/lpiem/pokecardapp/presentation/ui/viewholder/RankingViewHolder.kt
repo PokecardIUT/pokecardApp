@@ -17,7 +17,7 @@ class RankingViewHolder(var v: View): RecyclerView.ViewHolder(v) {
 
     fun bindUser(user: User, position: Int){
 
-        userName.text = user.name
+        userName.text = user.username
         userPosition.text = (position+1).toString()
         userLevel.text = "LV ${user.level.toString()}"
         userNbWin.text = "${user.nbWin.toString()} victoires"

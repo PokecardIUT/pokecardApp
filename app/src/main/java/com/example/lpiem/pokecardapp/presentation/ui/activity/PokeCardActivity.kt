@@ -2,6 +2,7 @@ package com.example.lpiem.pokecardapp.presentation.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.presentation.navigator.Navigator
@@ -46,6 +47,12 @@ class PokeCardActivity : AppCompatActivity(), BottomNavigationView.OnNavigationI
             R.id.bottom_navigation_ranking -> {
                 navigator.displayRanking()
                 title = getString(R.string.bottom_navigation_ranking)
+            }
+
+            R.id.bottom_navigation_my_sets -> {
+                Log.d("mlk","coucou")
+                navigator.displayMySets()
+                title = "Mes decks"
             }
 
         }
