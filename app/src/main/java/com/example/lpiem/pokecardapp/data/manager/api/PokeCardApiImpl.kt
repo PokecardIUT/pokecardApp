@@ -3,9 +3,11 @@ package com.example.lpiem.pokecardapp.data.manager.api
 import com.example.lpiem.pokecardapp.BuildConfig
 import com.example.lpiem.pokecardapp.data.model.Deck.Deck
 import com.example.lpiem.pokecardapp.data.model.Login.Login
-import com.example.lpiem.pokecardapp.data.model.Login.ResultCode
+import com.example.lpiem.pokecardapp.data.model.SetCard.Card
+import com.example.lpiem.pokecardapp.data.model.SetCard.CardsCount
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import com.example.lpiem.pokecardapp.data.model.User.User
+import com.example.lpiem.pokecardapp.data.model.Login.ResultCode
 import com.example.lpiem.pokecardapp.data.model.User.UserResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -40,6 +42,10 @@ class PokeCardApiImpl : PokeCardApi {
         return pokeCardApi.connexionWithEmail(username, password)
     }
 
+    override fun getUsers(accessToken: String): Call<List<User>> {
+        return pokeCardApi.getUsers(accessToken)
+    }
+    
     override fun signup(username: String, password: String): Call<ResultCode> {
         return pokeCardApi.signup(username,password)
     }
@@ -54,6 +60,14 @@ class PokeCardApiImpl : PokeCardApi {
 
     override fun getCardBySets(setCode: String, accessToken: String): Call<SetCard> {
        return pokeCardApi.getCardBySets(setCode,accessToken)
+    }
+
+    override fun getRandomCard(username: String, id: String, pageSize: String, page: String, nbCard: String, accessToken: String): Call<List<Card>> {
+        return pokeCardApi.getRandomCard(username, id, pageSize, page, nbCard, accessToken)
+    }
+
+    override fun getCardsCount(username: String, id: String, pageSize: String, page: String, accessToken: String): Call<CardsCount> {
+        return pokeCardApi.getCardsCount(username, id, pageSize, page, accessToken)
     }
 
     override fun getUser(accessToken: String, username: String): Call<UserResponse> {

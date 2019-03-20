@@ -34,9 +34,6 @@ class MySetsFragment : BaseFragment<MySetsViewModel>(), View.OnClickListener{
         super.onViewCreated(view, savedInstanceState)
         super.onActivityCreated(savedInstanceState)
 
-        Log.d("mlk","coucou2")
-
-
         navigator = Navigator(fragmentManager!!)
 
         fragment_my_sets_recyclerview.layoutManager = LinearLayoutManager(context)
@@ -82,7 +79,8 @@ class MySetsFragment : BaseFragment<MySetsViewModel>(), View.OnClickListener{
             }
 
             R.id.menu_shop -> {
-                Log.d("mlk","shop")
+                navigator.displaySetsList("shop")
+                activity?.title = "Boutique"
             }
         }
 

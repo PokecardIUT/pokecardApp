@@ -5,6 +5,8 @@ import com.example.lpiem.pokecardapp.data.manager.api.FacebookApiImpl
 import com.example.lpiem.pokecardapp.data.manager.api.PokeCardApiImpl
 import com.example.lpiem.pokecardapp.data.model.Deck.Deck
 import com.example.lpiem.pokecardapp.data.model.Login.Login
+import com.example.lpiem.pokecardapp.data.model.SetCard.Card
+import com.example.lpiem.pokecardapp.data.model.SetCard.CardsCount
 import com.example.lpiem.pokecardapp.data.model.Login.ResultCode
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import com.example.lpiem.pokecardapp.data.model.User.User
@@ -32,8 +34,20 @@ class PokeCardRepo{
         return pokeCardApi.getSets(user.token!!)
     }
 
+    fun getUsers(): Call<List<User>>{
+        return pokeCardApi.getUsers(user.token!!)
+    }
+
     fun getCardBySets(setCode: String): Call<SetCard>{
         return pokeCardApi.getCardBySets(setCode,user.token!!)
+    }
+
+    fun getRandomCard(id: String, nbCard: String): Call<List<Card>>{
+        return pokeCardApi.getRandomCard(user.username!!, id, "1000", "1", nbCard, user.token!!)
+    }
+
+    fun getCardsCount(id: String): Call<CardsCount>{
+        return pokeCardApi.getCardsCount(user.username!!, id, "1000", "1", user.token!!)
     }
 
     fun setUser(user: User) {

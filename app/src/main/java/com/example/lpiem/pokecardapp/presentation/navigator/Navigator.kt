@@ -1,5 +1,6 @@
 package com.example.lpiem.pokecardapp.presentation.navigator
 
+import android.util.Log
 import androidx.fragment.app.FragmentManager
 import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.presentation.ui.fragment.*
@@ -8,12 +9,17 @@ class Navigator(fragmentManager: FragmentManager){
 
     private val fragmentManager: FragmentManager = fragmentManager
 
-    fun displaySetsList(){
-        fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, SetsListFragment.newInstance()).commit()
+    fun displaySetsList(identifier: String = ""){
+        fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, SetsListFragment.newInstance(identifier)).commit()
     }
 
     fun displayCardList(setCode: String){
         fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, CardListFragment.newInstance(setCode)).commit()
+
+    }
+
+    fun displayShop(id: String){
+        fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, ShopFragment.newInstance(id)).commit()
 
     }
 

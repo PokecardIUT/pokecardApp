@@ -24,6 +24,9 @@ class ViewModelFactory: ViewModelProvider.Factory {
         if(modelClass.isAssignableFrom(RankingViewModel::class.java)){
             return RankingViewModel() as T
         }
+        if(modelClass.isAssignableFrom(ShopViewModel::class.java)){
+            return ShopViewModel() as T
+        }
         if(modelClass.isAssignableFrom(MySetsViewModel::class.java)){
             return MySetsViewModel() as T
         }
