@@ -43,6 +43,9 @@ class MySetsFragment : BaseFragment<MySetsViewModel>(), View.OnClickListener{
 
         fragment_my_sets_recyclerview.adapter = adapter
 
+        menu_shop.setOnClickListener(this)
+        menu_add_sets.setOnClickListener(this)
+
         val updateUser = Observer<User> { postUser ->
             this.updateList(postUser.sets!!)
         }
@@ -74,7 +77,13 @@ class MySetsFragment : BaseFragment<MySetsViewModel>(), View.OnClickListener{
     override fun onClick(v: View) {
 
         when (v.id) {
+            R.id.menu_add_sets -> {
+                Log.d("mlk","set")
+            }
 
+            R.id.menu_shop -> {
+                Log.d("mlk","shop")
+            }
         }
 
     }

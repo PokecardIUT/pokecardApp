@@ -38,14 +38,12 @@
             fab:menu_animationDelayPerItem="50"
             fab:menu_backgroundColor="@android:color/transparent"
             fab:menu_buttonSpacing="0dp"
-            fab:menu_colorNormal="#DA4336"
-            fab:menu_colorPressed="#E75043"
+            fab:menu_colorNormal="#056BB3"
+            fab:menu_colorPressed="#73007bff"
             fab:menu_colorRipple="#99FFFFFF"
-            fab:menu_fab_label="your_label_here"
-            fab:menu_fab_size="normal"
-            fab:menu_icon="@drawable/ic_search"
+            fab:menu_icon="@drawable/fab_add"
             fab:menu_labels_colorNormal="#333333"
-            fab:menu_labels_colorPressed="#444444"
+            fab:menu_labels_colorPressed="#FFFFFF"
             fab:menu_labels_colorRipple="#66FFFFFF"
             fab:menu_labels_cornerRadius="3dp"
             fab:menu_labels_ellipsize="none"
@@ -68,14 +66,29 @@
             fab:menu_shadowRadius="4dp"
             fab:menu_shadowXOffset="1dp"
             fab:menu_shadowYOffset="3dp"
-            fab:menu_showShadow="true">
+            fab:menu_showShadow="true"
+            fab:menu_labels_style="@style/MenuLabelsStyle">
 
             <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/menu_item"
+                android:id="@+id/menu_shop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_user"
-                fab:fab_label="Menu item 1"
+                android:src="@drawable/ic_shopping_cart"
+                fab:fab_colorNormal="#056BB3"
+                fab:fab_colorPressed="#73007bff"
+                fab:fab_colorRipple="#99FFFFFF"
+                fab:fab_label="Boutique"
+                fab:fab_size="mini" />
+
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/menu_add_sets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fab_add"
+                fab:fab_colorNormal="#056BB3"
+                fab:fab_colorPressed="#73007bff"
+                fab:fab_colorRipple="#99FFFFFF"
+                fab:fab_label="Créer decks"
                 fab:fab_size="mini" />
 
         </com.github.clans.fab.FloatingActionMenu>
