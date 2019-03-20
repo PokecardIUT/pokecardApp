@@ -13,8 +13,6 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 class PokeCardApiImpl : PokeCardApi {
-
-
     var pokeCardApi: PokeCardApi
 
     init {
@@ -42,6 +40,10 @@ class PokeCardApiImpl : PokeCardApi {
 
     override fun signup(username: String, password: String): Call<ResultCode> {
         return pokeCardApi.signup(username,password)
+    }
+    
+    override fun connexionWithService(username: String, secret: String): Call<Login> {
+        return pokeCardApi.connexionWithService(username, secret)
     }
 
     override fun getSets(accessToken: String): Call<Deck> {
