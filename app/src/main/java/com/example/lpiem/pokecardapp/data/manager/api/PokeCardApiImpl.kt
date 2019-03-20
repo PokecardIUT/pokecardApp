@@ -3,6 +3,7 @@ package com.example.lpiem.pokecardapp.data.manager.api
 import com.example.lpiem.pokecardapp.BuildConfig
 import com.example.lpiem.pokecardapp.data.model.Deck.Deck
 import com.example.lpiem.pokecardapp.data.model.Login.Login
+import com.example.lpiem.pokecardapp.data.model.Login.ResultCode
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -10,9 +11,6 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import rx.Observable
-import rx.android.schedulers.AndroidSchedulers
-import rx.schedulers.Schedulers
 
 class PokeCardApiImpl : PokeCardApi {
     var pokeCardApi: PokeCardApi
@@ -40,6 +38,10 @@ class PokeCardApiImpl : PokeCardApi {
         return pokeCardApi.connexionWithEmail(username, password)
     }
 
+    override fun signup(username: String, password: String): Call<ResultCode> {
+        return pokeCardApi.signup(username,password)
+    }
+    
     override fun connexionWithService(username: String, secret: String): Call<Login> {
         return pokeCardApi.connexionWithService(username, secret)
     }

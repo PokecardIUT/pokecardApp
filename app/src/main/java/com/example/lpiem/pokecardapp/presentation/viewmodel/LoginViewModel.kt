@@ -90,12 +90,15 @@ class LoginViewModel: ViewModel() {
                     }
 
                     override fun onResponse(call: Call<Login>, response: Response<Login>) {
-                        Log.d("mlk","succes")
-                        user.token = response.body()?.token?.token
-                        userLiveData.postValue(user)
+                        if(response.body()?.success != null) {
+                            Log.d("mlk", "succes")
+                            user.token = response.body()?.token?.token
+                            userLiveData.postValue(user)
+                        } else {
+                            error.postValue(ErrorMessage("Erreur d'authentification"))
+                        }
 
                     }
-
 
                 })
 
@@ -123,10 +126,13 @@ class LoginViewModel: ViewModel() {
                 }
 
                 override fun onResponse(call: Call<Login>, response: Response<Login>) {
-                    Log.d("mlk","succes")
-                    user.token = response.body()?.token?.token
-                    userLiveData.postValue(user)
-
+                    if(response.body()?.success != null) {
+                        Log.d("mlk", "succes")
+                        user.token = response.body()?.token?.token
+                        userLiveData.postValue(user)
+                    } else {
+                        error.postValue(ErrorMessage("Erreur d'authentification"))
+                    }
                 }
 
 
