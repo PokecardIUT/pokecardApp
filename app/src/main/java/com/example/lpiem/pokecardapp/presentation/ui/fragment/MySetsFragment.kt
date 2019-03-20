@@ -79,7 +79,7 @@ class MySetsFragment : BaseFragment<MySetsViewModel>(), View.OnClickListener{
             }
 
             R.id.menu_shop -> {
-                navigator.displaySetsList("shop")
+                navigator.displaySetsListShop()
                 activity?.title = "Boutique"
             }
         }

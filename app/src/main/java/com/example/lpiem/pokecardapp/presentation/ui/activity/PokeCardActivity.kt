@@ -27,10 +27,6 @@ class PokeCardActivity : AppCompatActivity(), BottomNavigationView.OnNavigationI
 
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finishAffinity()
-    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         item.isChecked = true
