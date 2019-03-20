@@ -10,4 +10,10 @@
     <color name="editTextActived">#056BB3</color>
     <color name="bottom_navigation">#056BB3</color>
     <color name="top_navigation">#056BB3</color>
+    <color name="line_separator">#056BB3</color>
+    <color name="text_signup">#056BB3</color>
+    <color name="fab_button_normal">#056BB3</color>
+    <color name="fab_button_pressed">#73007bff</color>
+    <color name="fab_label_text_color">#000</color>
+
 </resources>

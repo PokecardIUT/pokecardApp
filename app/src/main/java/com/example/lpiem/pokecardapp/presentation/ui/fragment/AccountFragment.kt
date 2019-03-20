@@ -48,7 +48,7 @@ class AccountFragment : BaseFragment<AccountViewModel>(), AccountCallback, View.
     }
 
     override fun showUserAccount(user: User) {
-        usernameTv.text = user.name
+        usernameTv.text = user.username
     }
 
     override fun onClick(v: View) {

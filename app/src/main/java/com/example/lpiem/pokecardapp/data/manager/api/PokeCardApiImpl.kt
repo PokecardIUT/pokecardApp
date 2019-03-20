@@ -7,18 +7,16 @@ import com.example.lpiem.pokecardapp.data.model.SetCard.Card
 import com.example.lpiem.pokecardapp.data.model.SetCard.CardsCount
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import com.example.lpiem.pokecardapp.data.model.User.User
+import com.example.lpiem.pokecardapp.data.model.Login.ResultCode
+import com.example.lpiem.pokecardapp.data.model.User.UserResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import rx.Observable
-import rx.android.schedulers.AndroidSchedulers
-import rx.schedulers.Schedulers
 
 class PokeCardApiImpl : PokeCardApi {
-
     var pokeCardApi: PokeCardApi
 
     init {
@@ -47,6 +45,14 @@ class PokeCardApiImpl : PokeCardApi {
     override fun getUsers(accessToken: String): Call<List<User>> {
         return pokeCardApi.getUsers(accessToken)
     }
+    
+    override fun signup(username: String, password: String): Call<ResultCode> {
+        return pokeCardApi.signup(username,password)
+    }
+    
+    override fun connexionWithService(username: String, secret: String): Call<Login> {
+        return pokeCardApi.connexionWithService(username, secret)
+    }
 
     override fun getSets(accessToken: String): Call<Deck> {
         return pokeCardApi.getSets(accessToken)
@@ -64,5 +70,8 @@ class PokeCardApiImpl : PokeCardApi {
         return pokeCardApi.getCardsCount(username, id, pageSize, page, accessToken)
     }
 
+    override fun getUser(accessToken: String, username: String): Call<UserResponse> {
+        return pokeCardApi.getUser(accessToken,username)
+    }
     
 }

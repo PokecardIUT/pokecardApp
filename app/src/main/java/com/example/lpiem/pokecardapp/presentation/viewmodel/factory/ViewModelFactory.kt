@@ -9,6 +9,9 @@ class ViewModelFactory: ViewModelProvider.Factory {
         if(modelClass.isAssignableFrom(LoginViewModel::class.java)){
             return LoginViewModel() as T
         }
+        if(modelClass.isAssignableFrom(SignUpViewModel::class.java)){
+            return SignUpViewModel() as T
+        }
         if(modelClass.isAssignableFrom(SetsListViewModel::class.java)){
             return SetsListViewModel() as T
         }
@@ -23,6 +26,9 @@ class ViewModelFactory: ViewModelProvider.Factory {
         }
         if(modelClass.isAssignableFrom(ShopViewModel::class.java)){
             return ShopViewModel() as T
+        }
+        if(modelClass.isAssignableFrom(MySetsViewModel::class.java)){
+            return MySetsViewModel() as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

@@ -2,6 +2,7 @@ package com.example.lpiem.pokecardapp.presentation.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.presentation.navigator.Navigator
@@ -26,6 +27,11 @@ class PokeCardActivity : AppCompatActivity(), BottomNavigationView.OnNavigationI
 
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finishAffinity()
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         item.isChecked = true
         when (item.itemId) {
@@ -44,8 +50,9 @@ class PokeCardActivity : AppCompatActivity(), BottomNavigationView.OnNavigationI
             }
 
             R.id.bottom_navigation_my_sets -> {
-                navigator.displaySetsList("shop")
-                title = getString(R.string.bottom_navigation_my_sets)
+                Log.d("mlk","coucou")
+                navigator.displayMySets()
+                title = "Mes decks"
             }
 
         }

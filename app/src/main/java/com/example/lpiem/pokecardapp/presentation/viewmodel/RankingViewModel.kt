@@ -19,7 +19,7 @@ class RankingViewModel: ViewModel() {
     var userList = MutableLiveData<List<User>>()
     var users = MutableLiveData<List<User>>()
 
-    fun getUsers(){
+    fun getUsers() {
         repo.getUsers().enqueue(object : Callback<List<User>> {
 
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
@@ -31,13 +31,11 @@ class RankingViewModel: ViewModel() {
 
                 users.postValue(response.body())
 
-                val list: ArrayList<User> = users.value as ArrayList<User>
-                list.sortWith(Comparator { user1, user2 -> user1.level!!.compareTo(user2.level!!) })
-                list.reverse()
-                userList.postValue(list)
+                //val list: ArrayList<User> = users.value as ArrayList<User>
+                //list.sortWith(Comparator { user1, user2 -> user1.level!!.compareTo(user2.level!!) })
+                //list.reverse()
+                //userList.postValue(list)
             }
-
-
         })
     }
 

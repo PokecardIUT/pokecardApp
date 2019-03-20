@@ -30,4 +30,8 @@ class Navigator(fragmentManager: FragmentManager){
     fun displayRanking(){
         fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, RankingFragment.newInstance()).commit()
     }
+
+    fun displayMySets(){
+        fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, MySetsFragment.newInstance()).commit()
+    }
 }
