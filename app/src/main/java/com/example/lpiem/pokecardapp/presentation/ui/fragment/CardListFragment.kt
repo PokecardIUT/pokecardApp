@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.lpiem.pokecardapp.R
@@ -40,7 +41,7 @@ class CardListFragment : BaseFragment<CardListViewModel>(), CardListCallback {
 
         fragment_card_list_recyclerview.adapter = adapter
 
-        adapter.setOnCardClick { onSetClick(it) }
+        adapter.setOnCardClick { card,check -> onSetClick(card,check) }
 
         val updateCardList = Observer<List<Card>>{
             postList -> updateList(postList)
@@ -63,7 +64,7 @@ class CardListFragment : BaseFragment<CardListViewModel>(), CardListCallback {
         adapter.updateCardList(cardList)
     }
 
-    private fun onSetClick(set: Card){
+    private fun onSetClick(set: Card, imageView: ImageView){
         Log.d("mlk", "switch")
     }
 

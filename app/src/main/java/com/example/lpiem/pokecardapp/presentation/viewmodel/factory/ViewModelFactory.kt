@@ -30,6 +30,9 @@ class ViewModelFactory: ViewModelProvider.Factory {
         if(modelClass.isAssignableFrom(MySetsViewModel::class.java)){
             return MySetsViewModel() as T
         }
+        if(modelClass.isAssignableFrom(CreateSetViewModel::class.java)){
+            return CreateSetViewModel() as T
+        }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

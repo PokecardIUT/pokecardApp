@@ -23,4 +23,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/card_hide"
         tools:srcCompat="@mipmap/card_hide" />
+
+    <ImageView
+        android:id="@+id/adapter_card_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_check" />
 </androidx.constraintlayout.widget.ConstraintLayout>
