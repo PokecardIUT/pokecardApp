@@ -23,61 +23,75 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="50dp">
 
             <TextView
-                style="@style/ViewHolderRanking"
                 android:id="@+id/adapter_user_list_position"
+                style="@style/ViewHolderRanking"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
                 android:fontFamily="sans-serif"
+                android:gravity="center_vertical"
+                android:text="100"
                 android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="@dimen/adapter_user_list_margin_top_image_view_position"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                style="@style/ViewHolderRanking"
                 android:id="@+id/adapter_user_list_name"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="12dp"
+                style="@style/ViewHolderRanking"
+                android:layout_width="170dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:gravity="center_vertical"
+                android:text="Username"
                 android:textSize="14sp"
-                app:layout_constraintStart_toEndOf="@id/adapter_user_list_position"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/adapter_user_list_position"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/adapter_user_list_imageview"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                tools:layout_editor_absoluteX="215dp"
-                tools:layout_editor_absoluteY="9dp"
-                tools:srcCompat="@tools:sample/avatars"
-                app:layout_constraintStart_toEndOf="@id/adapter_user_list_name"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/adapter_user_list_name"
                 app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="@dimen/adapter_user_list_margin_top_image_view_position" />
+                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                style="@style/ViewHolderRanking"
                 android:id="@+id/adapter_user_list_level"
+                style="@style/ViewHolderRanking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="70dp"
-                android:layout_marginTop="5dp"
-                app:layout_constraintStart_toEndOf="@id/adapter_user_list_imageview"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:text="level"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/adapter_user_list_imageview"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                style="@style/ViewHolderRanking"
                 android:id="@+id/adapter_user_list_number_win"
+                style="@style/ViewHolderRanking"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="45dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="4dp"
+                android:text="nbwin"
                 android:textAlignment="center"
-                app:layout_constraintStart_toEndOf="@id/adapter_user_list_imageview"
-                app:layout_constraintTop_toBottomOf="@id/adapter_user_list_level" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/adapter_user_list_imageview"
+                app:layout_constraintTop_toBottomOf="@+id/adapter_user_list_level" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

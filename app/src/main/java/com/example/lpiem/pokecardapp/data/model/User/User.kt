@@ -24,7 +24,9 @@ data class User(
 
 		var token: String? = null,
 
+		@field:SerializedName("level")
 		var level: String? = null,
 
+		@field:SerializedName("nbWin")
 		var nbWin: Number? = null
 )
