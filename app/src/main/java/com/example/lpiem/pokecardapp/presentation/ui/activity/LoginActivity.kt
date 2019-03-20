@@ -126,6 +126,7 @@ class LoginActivity : AppCompatActivity(), LoginCallback, View.OnClickListener {
     override fun goToPokeCardActivity() {
         val deckListActivityIntent = Intent(this, PokeCardActivity::class.java)
         startActivity(deckListActivityIntent)
+        finish()
     }
 
     override fun getContext(): Context = this
