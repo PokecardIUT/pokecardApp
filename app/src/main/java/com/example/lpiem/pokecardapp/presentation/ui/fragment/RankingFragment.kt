@@ -45,7 +45,7 @@ class RankingFragment : BaseFragment<RankingViewModel>(), RankingCallback {
 
         viewModel.getUserList().observe(this, updateUserList)
 
-        viewModel.getRank()
+        viewModel.getUsers()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

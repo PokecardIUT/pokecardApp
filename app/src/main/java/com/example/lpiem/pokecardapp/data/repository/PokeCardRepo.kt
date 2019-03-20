@@ -24,6 +24,10 @@ class PokeCardRepo{
         return pokeCardApi.getSets(user.token!!)
     }
 
+    fun getUsers(): Call<List<User>>{
+        return pokeCardApi.getUsers(user.token!!)
+    }
+
     fun getCardBySets(setCode: String): Call<SetCard>{
         return pokeCardApi.getCardBySets(setCode,user.token!!)
     }

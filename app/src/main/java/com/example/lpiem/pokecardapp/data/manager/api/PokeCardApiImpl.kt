@@ -5,6 +5,7 @@ import com.example.lpiem.pokecardapp.data.model.Deck.Deck
 import com.example.lpiem.pokecardapp.data.model.Login.Login
 import com.example.lpiem.pokecardapp.data.model.SetCard.Card
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
+import com.example.lpiem.pokecardapp.data.model.User.User
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
@@ -40,6 +41,10 @@ class PokeCardApiImpl : PokeCardApi {
 
     override fun connexionWithEmail(username: String, password: String): Call<Login> {
         return pokeCardApi.connexionWithEmail(username, password)
+    }
+
+    override fun getUsers(accessToken: String): Call<List<User>> {
+        return pokeCardApi.getUsers(accessToken)
     }
 
     override fun getSets(accessToken: String): Call<Deck> {

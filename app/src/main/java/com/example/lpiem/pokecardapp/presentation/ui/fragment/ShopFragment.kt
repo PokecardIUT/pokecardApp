@@ -18,7 +18,6 @@ import android.widget.ImageView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.alert_cards.*
 
-
 private const val INTENT_SET_ID_EXTRA = "INTENT_SET_ID_EXTRA"
 
 class ShopFragment : BaseFragment<ShopViewModel>(), View.OnClickListener {
@@ -85,14 +84,12 @@ class ShopFragment : BaseFragment<ShopViewModel>(), View.OnClickListener {
         next.setOnClickListener {
             if (index + 1 < cards.count()) {
                 ++index
-                Log.d("cardsRandom", cards[index].toString())
                 Picasso.get().load(cards[index].imageUrlHiRes).placeholder(R.mipmap.card_hide).into(cardImageView)
             }
         }
         prev.setOnClickListener {
             if (index - 1 >= 0) {
                 --index
-                Log.d("cardsRandom", cards[index].toString())
                 Picasso.get().load(cards[index].imageUrlHiRes).placeholder(R.mipmap.card_hide).into(cardImageView)
             }
         }

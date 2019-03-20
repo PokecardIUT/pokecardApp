@@ -4,6 +4,7 @@ import com.example.lpiem.pokecardapp.data.model.Deck.Deck
 import com.example.lpiem.pokecardapp.data.model.Login.Login
 import com.example.lpiem.pokecardapp.data.model.SetCard.Card
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
+import com.example.lpiem.pokecardapp.data.model.User.User
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -13,9 +14,12 @@ interface PokeCardApi {
     fun connexionWithEmail(@Field("username") username: String,
                            @Field("password") password: String): Call<Login>
 
-   
+
     @GET("/api/decks")
     fun getSets(@Query("access_token") accessToken: String): Call<Deck>
+
+    @GET("/api/users")
+    fun getUsers(@Query("access_token") accessToken: String): Call<List<User>>
 
     @GET("/api/cards/{setCode}/all")
     fun getCardBySets(@Path("setCode") setCode: String, @Query("access_token") accessToken: String): Call<SetCard>
