@@ -17,6 +17,7 @@ import com.example.lpiem.pokecardapp.data.model.User.CardsUser
 import com.example.lpiem.pokecardapp.data.model.User.User
 import com.example.lpiem.pokecardapp.presentation.navigator.Navigator
 import com.example.lpiem.pokecardapp.presentation.ui.adapter.CardListAdapter
+import com.example.lpiem.pokecardapp.presentation.ui.adapter.ChooseCardAdapter
 import com.example.lpiem.pokecardapp.presentation.ui.fragment.base.BaseFragment
 import com.example.lpiem.pokecardapp.presentation.ui.view.CardListCallback
 import com.example.lpiem.pokecardapp.presentation.viewmodel.CardListViewModel
@@ -26,6 +27,7 @@ import kotlinx.android.synthetic.main.fragment_create_set.*
 
 class CreateSetFragment : BaseFragment<CreateSetViewModel>() {
     private lateinit var adapter: CardListAdapter
+    private lateinit var adapterCard: ChooseCardAdapter
     private lateinit var navigator: Navigator
     private var listChooseCard: ArrayList<Card> = ArrayList()
     private var listCard: ArrayList<Card> = ArrayList()
@@ -34,6 +36,7 @@ class CreateSetFragment : BaseFragment<CreateSetViewModel>() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         adapter = CardListAdapter()
+        adapterCard = ChooseCardAdapter()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,10 +46,14 @@ class CreateSetFragment : BaseFragment<CreateSetViewModel>() {
         navigator = Navigator(fragmentManager!!)
 
         fragment_create_set_recyclerview.layoutManager = GridLayoutManager(context,3)
+        fragment_create_set_recycleview_card.layoutManager = GridLayoutManager(context,5)
+
 
         fragment_create_set_recyclerview.adapter = adapter
+        fragment_create_set_recycleview_card.adapter = adapterCard
 
         adapter.setOnCardClick { card,check -> onCardClick(card,check) }
+        adapterCard.setOnCardClick { card -> onCardChooseClick(card) }
 
         val updateUser = Observer<User> { postUser ->
             listCard = ArrayList(postUser.cards!!)
@@ -84,15 +91,17 @@ class CreateSetFragment : BaseFragment<CreateSetViewModel>() {
         if(imageView.visibility == View.INVISIBLE) {
             if (listChooseCard.count() < 5) {
                 listChooseCard.add(card)
-                imageView.visibility = View.VISIBLE
-
             }
         } else {
             listChooseCard.remove(card)
-            imageView.visibility = View.INVISIBLE
         }
+        adapterCard.updateCardList(listChooseCard)
     }
 
+    private fun onCardChooseClick(card: Card) {
+        listChooseCard.remove(card)
+        adapterCard.updateCardList(listChooseCard)
+    }
 
     companion object {
         fun newInstance(): CreateSetFragment =  CreateSetFragment()
