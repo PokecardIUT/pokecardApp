@@ -82,6 +82,11 @@ class MySetsFragment : BaseFragment<MySetsViewModel>(), View.OnClickListener{
                 navigator.displaySetsListShop()
                 activity?.title = "Boutique"
             }
+
+            R.id.menu_trade -> {
+                navigator.displayTrade()
+                activity?.title = "Echange de cartes"
+            }
         }
 
     }

@@ -8,6 +8,8 @@ import com.example.lpiem.pokecardapp.data.model.SetCard.CardsCount
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import com.example.lpiem.pokecardapp.data.model.User.User
 import com.example.lpiem.pokecardapp.data.model.Login.ResultCode
+import com.example.lpiem.pokecardapp.data.model.SuccessMessage
+import com.example.lpiem.pokecardapp.data.model.TradeData
 import com.example.lpiem.pokecardapp.data.model.User.UserResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -72,6 +74,10 @@ class PokeCardApiImpl : PokeCardApi {
 
     override fun getUser(accessToken: String, username: String): Call<UserResponse> {
         return pokeCardApi.getUser(accessToken,username)
+    }
+
+    override fun trade(accessToken: String, users: List<User>, cards: List<Card>): Call<SuccessMessage<List<TradeData>>> {
+        return pokeCardApi.trade(accessToken, users, cards)
     }
     
 }

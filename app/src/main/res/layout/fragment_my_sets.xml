@@ -91,6 +91,17 @@
                 fab:fab_label="Créer decks"
                 fab:fab_size="mini" />
 
+            <com.github.clans.fab.FloatingActionButton
+                android:id="@+id/menu_trade"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fab_add"
+                fab:fab_colorNormal="#056BB3"
+                fab:fab_colorPressed="#73007bff"
+                fab:fab_colorRipple="#99FFFFFF"
+                fab:fab_label="Echange de cartes"
+                fab:fab_size="mini" />
+
         </com.github.clans.fab.FloatingActionMenu>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

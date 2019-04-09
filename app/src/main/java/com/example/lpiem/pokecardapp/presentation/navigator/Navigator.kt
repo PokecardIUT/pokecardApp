@@ -17,6 +17,10 @@ class Navigator(fragmentManager: FragmentManager){
         fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, SetsListFragment.newInstance("shop")).addToBackStack(null).commit()
     }
 
+    fun displayTrade(){
+        fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, TradeFragment.newInstance()).addToBackStack(null).commit()
+    }
+
     fun displayCardList(setCode: String){
         fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, CardListFragment.newInstance(setCode)).addToBackStack(null).commit()
 
