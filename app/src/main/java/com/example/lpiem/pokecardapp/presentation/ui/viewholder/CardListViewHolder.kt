@@ -17,6 +17,12 @@ class CardListViewHolder(var v: View): RecyclerView.ViewHolder(v) {
     fun bindSet(card: Card, onSetClick: ((Card) -> Unit)?) {
         cardImageView.setImageResource(R.mipmap.card_hide)
         Picasso.get().load(card.imageUrl).placeholder(R.mipmap.card_hide).into(cardImageView)
+
+        itemView.setOnClickListener{
+            onSetClick?.let {
+                it(card)
+            }
+        }
     }
 
 }
