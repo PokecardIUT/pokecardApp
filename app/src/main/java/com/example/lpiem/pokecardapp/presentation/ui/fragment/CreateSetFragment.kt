@@ -116,11 +116,17 @@ class CreateSetFragment : BaseFragment<CreateSetViewModel>(), View.OnClickListen
             _, _ ->
 
             val setsUser = SetsUser()
-            setsUser.cards = listChooseCard
+            val listChooseCardTmp = ArrayList<CardsUser>()
+            listChooseCard.map {
+                val tmp = CardsUser()
+                tmp.imageUrlHiRes = it.imageUrlHiRes
+                tmp.id = it.id
+                listChooseCardTmp.add(tmp);
+            }
+            setsUser.cards = listChooseCardTmp
             setsUser.title = nameField.editText?.text.toString()
             setsUser.description = desciptionField.editText?.text.toString()
             viewModel.addSet(setsUser)
-            navigator.displayMySets()
         }
         alertAdd.setNegativeButton("Cancel") {
             d: DialogInterface, _ ->

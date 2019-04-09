@@ -58,7 +58,7 @@ interface PokeCardApi {
     @POST("/api/setUpdate")
     @FormUrlEncoded
     fun addSet(@Field("username") username: String,
-               @Field("set") set: SetsUser,
+               @Field("set") set: String,
                @Query("access_token") accessToken: String): Call<UserResponse>
 
 }

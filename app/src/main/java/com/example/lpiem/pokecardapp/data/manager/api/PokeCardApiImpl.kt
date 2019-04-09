@@ -75,7 +75,7 @@ class PokeCardApiImpl : PokeCardApi {
         return pokeCardApi.getUser(accessToken,username)
     }
 
-    override fun addSet(username: String, set: SetsUser, accessToken: String): Call<UserResponse> {
+    override fun addSet(username: String, set: String, accessToken: String): Call<UserResponse> {
        return pokeCardApi.addSet(username, set,accessToken)
     }
 }
