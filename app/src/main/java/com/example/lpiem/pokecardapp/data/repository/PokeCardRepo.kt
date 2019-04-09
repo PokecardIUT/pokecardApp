@@ -9,6 +9,7 @@ import com.example.lpiem.pokecardapp.data.model.SetCard.Card
 import com.example.lpiem.pokecardapp.data.model.SetCard.CardsCount
 import com.example.lpiem.pokecardapp.data.model.Login.ResultCode
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
+import com.example.lpiem.pokecardapp.data.model.User.SetsUser
 import com.example.lpiem.pokecardapp.data.model.User.User
 import com.example.lpiem.pokecardapp.data.model.User.UserResponse
 import retrofit2.Call
@@ -58,6 +59,10 @@ class PokeCardRepo{
 
     fun retrieveUser(): Call<UserResponse>{
         return pokeCardApi.getUser(this.user.token!!,this.user.username!!)
+    }
+
+    fun addSet(set: SetsUser): Call<UserResponse> {
+        return pokeCardApi.addSet(this.user.username!!, set, this.user.token!!)
     }
 
     fun isLoggedFb(): Boolean = facebookApi.isLogged()

@@ -66,6 +66,7 @@ class CardListFragment : BaseFragment<CardListViewModel>(), CardListCallback {
 
     private fun onSetClick(set: Card, imageView: ImageView){
         Log.d("mlk", "switch")
+
     }
 
     companion object {

@@ -8,6 +8,7 @@ import com.example.lpiem.pokecardapp.data.model.SetCard.CardsCount
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import com.example.lpiem.pokecardapp.data.model.User.User
 import com.example.lpiem.pokecardapp.data.model.Login.ResultCode
+import com.example.lpiem.pokecardapp.data.model.User.SetsUser
 import com.example.lpiem.pokecardapp.data.model.User.UserResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -73,5 +74,8 @@ class PokeCardApiImpl : PokeCardApi {
     override fun getUser(accessToken: String, username: String): Call<UserResponse> {
         return pokeCardApi.getUser(accessToken,username)
     }
-    
+
+    override fun addSet(username: String, set: SetsUser, accessToken: String): Call<UserResponse> {
+       return pokeCardApi.addSet(username, set,accessToken)
+    }
 }

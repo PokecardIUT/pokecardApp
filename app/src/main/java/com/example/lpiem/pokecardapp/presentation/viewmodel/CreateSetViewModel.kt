@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.lpiem.pokecardapp.PokeApplication
 import com.example.lpiem.pokecardapp.data.model.ErrorMessage
+import com.example.lpiem.pokecardapp.data.model.User.SetsUser
 import com.example.lpiem.pokecardapp.data.model.User.User
 import com.example.lpiem.pokecardapp.data.model.User.UserResponse
 import retrofit2.Call
@@ -14,6 +15,7 @@ import retrofit2.Response
 class CreateSetViewModel: ViewModel() {
     var repository = PokeApplication.getInstance().repository
     var userLiveData = MutableLiveData<User>()
+    var setAdd = MutableLiveData<Boolean>()
     var error = MutableLiveData<ErrorMessage>()
 
     fun retrieveUser() {
@@ -33,8 +35,22 @@ class CreateSetViewModel: ViewModel() {
         })
     }
 
+    fun addSet(set: SetsUser) {
+        repository.addSet(set).enqueue(object : Callback<UserResponse> {
+            override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+            }
+
+            override fun onResponse(call: Call<UserResponse>, response: Response<UserResponse>) {
+               setAdd.postValue(true)
+            }
+
+
+        })
+    }
+
     fun getUser(): LiveData<User> = userLiveData
 
     fun getError(): LiveData<ErrorMessage> = error
 
+    fun getSetAdd(): LiveData<Boolean> = setAdd
 }

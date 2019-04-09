@@ -1,15 +1,16 @@
 package com.example.lpiem.pokecardapp.data.model.User
 
+import com.example.lpiem.pokecardapp.data.model.SetCard.Card
 import com.google.gson.annotations.SerializedName
 
 data class SetsUser(
 
 		@field:SerializedName("cards")
-	val cards: List<CardsUser?>? = null,
+		var cards: List<Card>? = null,
 
 		@field:SerializedName("description")
-	val description: String? = null,
+		var description: String? = null,
 
 		@field:SerializedName("title")
-	val title: String? = null
+		var title: String? = null
 )
