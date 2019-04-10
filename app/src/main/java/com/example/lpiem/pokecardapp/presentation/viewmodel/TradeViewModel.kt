@@ -17,6 +17,7 @@ import retrofit2.Response
 class TradeViewModel: ViewModel() {
     var repo = PokeApplication.getInstance().repository
     var isTrade = MutableLiveData<Boolean>()
+    var userList = MutableLiveData<List<User>>()
 
     fun trade(users: List<User>, cards: List<Card>) {
         repo.trade(users, cards).enqueue(object : Callback<SuccessMessage<List<TradeData>>> {
@@ -32,6 +33,27 @@ class TradeViewModel: ViewModel() {
 
         })
     }
+
+
+    fun getUsers() {
+        repo.getUsers().enqueue(object : Callback<List<User>> {
+
+            override fun onFailure(call: Call<List<User>>, t: Throwable) {
+                Log.d("mlk", "failure")
+            }
+
+            override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
+                Log.d("mlk", response.body().toString())
+
+                val list: ArrayList<User> = ArrayList(response.body())
+                list.sortWith(Comparator { user1, user2 -> user1.level!!.compareTo(user2.level!!) })
+                list.reverse()
+                userList.postValue(list)
+            }
+        })
+    }
+
+    fun getUserList() : LiveData<List<User>> = userList
 
     fun isTradeActive() : LiveData<Boolean> = isTrade
 }

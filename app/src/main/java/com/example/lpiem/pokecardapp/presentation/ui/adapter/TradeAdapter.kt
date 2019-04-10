@@ -3,6 +3,7 @@ package com.example.lpiem.pokecardapp.presentation.ui.adapter
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.lpiem.pokecardapp.R
+import com.example.lpiem.pokecardapp.data.model.Deck.SetsItem
 import com.example.lpiem.pokecardapp.data.model.User.User
 import com.example.lpiem.pokecardapp.presentation.ui.viewholder.TradeViewHolder
 import com.example.lpiem.pokecardapp.presentation.utils.inflate
@@ -10,7 +11,7 @@ import com.example.lpiem.pokecardapp.presentation.utils.inflate
 class TradeAdapter: RecyclerView.Adapter<TradeViewHolder>() {
 
     private val userList: MutableList<User> = mutableListOf()
-
+    private  var onUserClickListener: ((User)->Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TradeViewHolder {
         val inflatedView = parent.inflate(R.layout.adapter_trade, false)
@@ -22,7 +23,7 @@ class TradeAdapter: RecyclerView.Adapter<TradeViewHolder>() {
     override fun onBindViewHolder(holder: TradeViewHolder, position: Int) {
         val userItem = userList[position]
 
-        holder.bindUser(userItem)
+        holder.bindUser(userItem,onUserClickListener)
     }
 
     fun addUserList(userList : List<User>){
@@ -33,5 +34,9 @@ class TradeAdapter: RecyclerView.Adapter<TradeViewHolder>() {
     fun updateUserList(userList: List<User>){
         this.userList.clear()
         addUserList(userList)
+    }
+
+    fun setOnUserClick(onUserClick: (User)->Unit){
+        onUserClickListener = onUserClick
     }
 }

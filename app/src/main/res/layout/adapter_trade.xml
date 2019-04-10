@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/adapter_trade_cardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/adapter_sets_list_margin_cardview"
@@ -26,21 +26,7 @@
             android:layout_height="50dp">
 
             <TextView
-                android:id="@+id/adapter_trade_position"
-                style="@style/ViewHolderRanking"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                android:fontFamily="sans-serif"
-                android:gravity="center_vertical"
-                android:text="100"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/adapter_trade_name"
+                android:id="@+id/adapter_trade_list_name"
                 style="@style/ViewHolderRanking"
                 android:layout_width="170dp"
                 android:layout_height="0dp"
@@ -49,11 +35,11 @@
                 android:text="Username"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/adapter_trade_position"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/adapter_trade_level"
+                android:id="@+id/adapter_trade_list_level"
                 style="@style/ViewHolderRanking"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,11 +48,11 @@
                 android:layout_marginEnd="8dp"
                 android:text="level"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/adapter_trade_name"
+                app:layout_constraintStart_toEndOf="@+id/adapter_trade_list_name"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/adapter_trade_number_win"
+                android:id="@+id/adapter_trade_list_number_win"
                 style="@style/ViewHolderRanking"
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
@@ -78,8 +64,8 @@
                 android:textAlignment="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/adapter_trade_level"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintStart_toEndOf="@+id/adapter_trade_list_name"
+                app:layout_constraintTop_toBottomOf="@+id/adapter_trade_list_level" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
