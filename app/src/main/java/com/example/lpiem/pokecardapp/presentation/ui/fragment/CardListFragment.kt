@@ -1,12 +1,16 @@
 package com.example.lpiem.pokecardapp.presentation.ui.fragment
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.lpiem.pokecardapp.R
@@ -16,6 +20,7 @@ import com.example.lpiem.pokecardapp.presentation.viewmodel.CardListViewModel
 import com.example.lpiem.pokecardapp.presentation.ui.adapter.CardListAdapter
 import com.example.lpiem.pokecardapp.presentation.ui.fragment.base.BaseFragment
 import com.example.lpiem.pokecardapp.presentation.ui.view.CardListCallback
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_card_list.*
 
 private const val INTENT_SET_ID_EXTRA = "INTENT_SET_ID_EXTRA"
@@ -41,7 +46,7 @@ class CardListFragment : BaseFragment<CardListViewModel>(), CardListCallback {
 
         fragment_card_list_recyclerview.adapter = adapter
 
-        adapter.setOnCardClick { card -> onSetClick(card) }
+        adapter.setOnCardClick { onCardClick(it) }
 
         val updateCardList = Observer<List<Card>>{
             postList -> updateList(postList)
@@ -64,9 +69,19 @@ class CardListFragment : BaseFragment<CardListViewModel>(), CardListCallback {
         adapter.updateCardList(cardList)
     }
 
-    private fun onSetClick(set: Card){
-        Log.d("mlk", "switch")
-
+    private fun onCardClick(card: Card){
+        Log.d("Card", card.id)
+        val alertAdd = AlertDialog.Builder(context)
+        val factory = LayoutInflater.from(context)
+        val view = factory.inflate(R.layout.alert_one_card, null)
+        alertAdd.setView(view)
+        val cardImageView: ImageView = view.findViewById(R.id.dialog_imageview)
+        Picasso.get().load(card.imageUrlHiRes).placeholder(R.mipmap.card_hide).into(cardImageView)
+        alertAdd.setPositiveButton("OK") {
+            d: DialogInterface, _ ->
+            d.dismiss()
+        }
+        alertAdd.show()
     }
 
     companion object {
