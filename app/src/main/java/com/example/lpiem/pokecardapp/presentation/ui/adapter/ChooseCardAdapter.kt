@@ -6,21 +6,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.lpiem.pokecardapp.R
 import com.example.lpiem.pokecardapp.data.model.SetCard.Card
 import com.example.lpiem.pokecardapp.presentation.ui.viewholder.CardListViewHolder
+import com.example.lpiem.pokecardapp.presentation.ui.viewholder.ChooseCardViewHolder
 import com.example.lpiem.pokecardapp.presentation.utils.inflate
 
-class CardListAdapter: RecyclerView.Adapter<CardListViewHolder>() {
+class ChooseCardAdapter: RecyclerView.Adapter<ChooseCardViewHolder>() {
 
     private val cardList: MutableList<Card> = mutableListOf()
     private  var onCardClickListener: ((Card)->Unit)? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardListViewHolder {
-        val inflatedView = parent.inflate(R.layout.adapter_card_list, false)
-        return CardListViewHolder(inflatedView)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChooseCardViewHolder {
+        val inflatedView = parent.inflate(R.layout.adapter_card_create_set, false)
+        return ChooseCardViewHolder(inflatedView)
     }
 
     override fun getItemCount(): Int = cardList.size
 
-    override fun onBindViewHolder(holder: CardListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ChooseCardViewHolder, position: Int) {
         val itemSet = cardList[position]
 
         holder.bindSet(itemSet,onCardClickListener)
