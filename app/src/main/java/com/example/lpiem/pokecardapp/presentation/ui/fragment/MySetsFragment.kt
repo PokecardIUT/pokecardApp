@@ -42,6 +42,7 @@ class MySetsFragment : BaseFragment<MySetsViewModel>(), View.OnClickListener{
 
         menu_shop.setOnClickListener(this)
         menu_add_sets.setOnClickListener(this)
+        menu_trade.setOnClickListener(this)
 
         val updateUser = Observer<User> { postUser ->
             this.updateList(postUser.sets!!)
@@ -84,6 +85,11 @@ class MySetsFragment : BaseFragment<MySetsViewModel>(), View.OnClickListener{
             R.id.menu_shop -> {
                 navigator.displaySetsListShop()
                 activity?.title = "Boutique"
+            }
+
+            R.id.menu_trade -> {
+                navigator.displayTrade()
+                activity?.title = "Echange de cartes"
             }
         }
 

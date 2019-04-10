@@ -1,5 +1,6 @@
 package com.example.lpiem.pokecardapp.presentation.ui.activity
 
+import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +15,8 @@ class PokeCardActivity : AppCompatActivity(), BottomNavigationView.OnNavigationI
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_poke_card)
+
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         title = "Rechercher"
 
