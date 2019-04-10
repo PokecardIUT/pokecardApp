@@ -41,7 +41,7 @@ class CardListFragment : BaseFragment<CardListViewModel>(), CardListCallback {
 
         fragment_card_list_recyclerview.adapter = adapter
 
-        adapter.setOnCardClick { card,check -> onSetClick(card,check) }
+        adapter.setOnCardClick { card -> onSetClick(card) }
 
         val updateCardList = Observer<List<Card>>{
             postList -> updateList(postList)
@@ -64,7 +64,7 @@ class CardListFragment : BaseFragment<CardListViewModel>(), CardListCallback {
         adapter.updateCardList(cardList)
     }
 
-    private fun onSetClick(set: Card, imageView: ImageView){
+    private fun onSetClick(set: Card){
         Log.d("mlk", "switch")
 
     }

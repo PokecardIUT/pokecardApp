@@ -62,7 +62,7 @@ class CreateSetFragment : BaseFragment<CreateSetViewModel>(), View.OnClickListen
         fragment_create_set_recyclerview.adapter = adapter
         fragment_create_set_recycleview_card.adapter = adapterCard
 
-        adapter.setOnCardClick { card,check -> onCardClick(card,check) }
+        adapter.setOnCardClick { card -> onCardClick(card) }
         adapterCard.setOnCardClick { card -> onCardChooseClick(card) }
 
         val updateUser = Observer<User> { postUser ->
@@ -143,8 +143,10 @@ class CreateSetFragment : BaseFragment<CreateSetViewModel>(), View.OnClickListen
         adapter.updateCardList(cardList)
     }
 
-    private fun onCardClick(card: Card, imageView: ImageView){
-        if(imageView.visibility == View.INVISIBLE) {
+    private fun onCardClick(card: Card){
+        val filter = listChooseCard.filter { item -> item == card }
+
+        if(filter.count() == 0) {
             if (listChooseCard.count() < 5) {
                 listChooseCard.add(card)
             }

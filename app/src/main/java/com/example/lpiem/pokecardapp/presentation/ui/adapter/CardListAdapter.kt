@@ -11,7 +11,7 @@ import com.example.lpiem.pokecardapp.presentation.utils.inflate
 class CardListAdapter: RecyclerView.Adapter<CardListViewHolder>() {
 
     private val cardList: MutableList<Card> = mutableListOf()
-    private  var onCardClickListener: ((Card, ImageView)->Unit)? = null
+    private  var onCardClickListener: ((Card)->Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardListViewHolder {
         val inflatedView = parent.inflate(R.layout.adapter_card_list, false)
@@ -36,7 +36,7 @@ class CardListAdapter: RecyclerView.Adapter<CardListViewHolder>() {
         addCardList(cardList)
     }
 
-    fun setOnCardClick(onCardClick: (Card, ImageView)->Unit){
+    fun setOnCardClick(onCardClick: (Card)->Unit){
         onCardClickListener = onCardClick
     }
 }
