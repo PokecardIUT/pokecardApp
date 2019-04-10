@@ -10,6 +10,7 @@ import com.example.lpiem.pokecardapp.data.model.SetCard.CardsCount
 import com.example.lpiem.pokecardapp.data.model.Login.ResultCode
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import com.example.lpiem.pokecardapp.data.model.SuccessMessage
+import com.example.lpiem.pokecardapp.data.model.Trade.Trade
 import com.example.lpiem.pokecardapp.data.model.TradeData
 import com.example.lpiem.pokecardapp.data.model.User.SetsUser
 import com.example.lpiem.pokecardapp.data.model.User.User
@@ -64,7 +65,7 @@ class PokeCardRepo{
         return pokeCardApi.getUser(this.user.token!!,this.user.username!!)
     }
 
-    fun trade(users: List<User>, cards: List<Card>): Call<SuccessMessage<List<TradeData>>>{
+    fun trade(users: List<String>, cards: List<String>): Call<Trade>{
         return pokeCardApi.trade(this.user.token!!, users, cards)
     }
     

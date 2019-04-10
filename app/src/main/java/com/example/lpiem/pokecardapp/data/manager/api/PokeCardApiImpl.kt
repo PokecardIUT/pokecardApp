@@ -9,6 +9,7 @@ import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import com.example.lpiem.pokecardapp.data.model.User.User
 import com.example.lpiem.pokecardapp.data.model.Login.ResultCode
 import com.example.lpiem.pokecardapp.data.model.SuccessMessage
+import com.example.lpiem.pokecardapp.data.model.Trade.Trade
 import com.example.lpiem.pokecardapp.data.model.TradeData
 import com.example.lpiem.pokecardapp.data.model.User.SetsUser
 import com.example.lpiem.pokecardapp.data.model.User.UserResponse
@@ -77,7 +78,7 @@ class PokeCardApiImpl : PokeCardApi {
         return pokeCardApi.getUser(accessToken,username)
     }
 
-    override fun trade(accessToken: String, users: List<User>, cards: List<Card>): Call<SuccessMessage<List<TradeData>>> {
+    override fun trade(accessToken: String, users: List<String>, cards: List<String>): Call<Trade> {
         return pokeCardApi.trade(accessToken, users, cards)
     }
     

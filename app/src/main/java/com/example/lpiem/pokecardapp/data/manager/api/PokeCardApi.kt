@@ -8,6 +8,7 @@ import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import com.example.lpiem.pokecardapp.data.model.User.User
 import com.example.lpiem.pokecardapp.data.model.Login.ResultCode
 import com.example.lpiem.pokecardapp.data.model.SuccessMessage
+import com.example.lpiem.pokecardapp.data.model.Trade.Trade
 import com.example.lpiem.pokecardapp.data.model.TradeData
 import com.example.lpiem.pokecardapp.data.model.User.SetsUser
 import com.example.lpiem.pokecardapp.data.model.User.UserResponse
@@ -60,8 +61,8 @@ interface PokeCardApi {
     @POST("/api/trade")
     @FormUrlEncoded
     fun trade(@Query("access_token") accessToken: String,
-              @Field("users") users: List<User>,
-              @Field("cards") cards: List<Card>): Call<SuccessMessage<List<TradeData>>>
+              @Field("users") users: List<String>,
+              @Field("cards") cards: List<String>): Call<Trade>
               
     @POST("/api/setUpdate")
     @FormUrlEncoded
