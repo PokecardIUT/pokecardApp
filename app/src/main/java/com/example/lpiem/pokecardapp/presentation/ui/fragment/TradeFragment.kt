@@ -61,7 +61,7 @@ class TradeFragment : BaseFragment<TradeViewModel>() {
     fun onUserClick(user: User) {
         fragment_trade_recyclerview.adapter = adapterCardUser
 
-        //adapterCardUser.updateCardList(user.cards)
+        adapterCardUser.updateCardList(user.cards!!)
     }
 
     fun updateList(userList: List<User>) {

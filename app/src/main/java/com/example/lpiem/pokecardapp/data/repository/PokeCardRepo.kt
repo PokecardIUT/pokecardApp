@@ -11,8 +11,10 @@ import com.example.lpiem.pokecardapp.data.model.Login.ResultCode
 import com.example.lpiem.pokecardapp.data.model.SetCard.SetCard
 import com.example.lpiem.pokecardapp.data.model.SuccessMessage
 import com.example.lpiem.pokecardapp.data.model.TradeData
+import com.example.lpiem.pokecardapp.data.model.User.SetsUser
 import com.example.lpiem.pokecardapp.data.model.User.User
 import com.example.lpiem.pokecardapp.data.model.User.UserResponse
+import com.google.gson.Gson
 import retrofit2.Call
 
 class PokeCardRepo{
@@ -64,6 +66,10 @@ class PokeCardRepo{
 
     fun trade(users: List<User>, cards: List<Card>): Call<SuccessMessage<List<TradeData>>>{
         return pokeCardApi.trade(this.user.token!!, users, cards)
+    }
+    
+    fun addSet(set: SetsUser): Call<UserResponse> {
+        return pokeCardApi.addSet(this.user.username!!, Gson().toJson(set), this.user.token!!)
     }
 
     fun isLoggedFb(): Boolean = facebookApi.isLogged()

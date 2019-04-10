@@ -15,9 +15,9 @@
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <ImageView
-        android:id="@+id/adapter_card_list_card"
-        android:layout_width="@dimen/adapter_card_list_card_width"
-        android:layout_height="@dimen/adapter_card_list_card_height"
+        android:id="@+id/adapter_card_create_set_card"
+        android:layout_width="50dp"
+        android:layout_height="75dp"
         android:layout_marginTop="@dimen/adapter_card_list_card_margin_top"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -25,7 +25,7 @@
         tools:srcCompat="@mipmap/card_hide" />
 
     <ImageView
-        android:id="@+id/adapter_card_check"
+        android:id="@+id/adapter_card_create_set_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"

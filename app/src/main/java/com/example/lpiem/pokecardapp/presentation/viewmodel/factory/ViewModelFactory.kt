@@ -33,6 +33,9 @@ class ViewModelFactory: ViewModelProvider.Factory {
         if(modelClass.isAssignableFrom(TradeViewModel::class.java)){
             return TradeViewModel() as T
         }
+        if(modelClass.isAssignableFrom(CreateSetViewModel::class.java)){
+            return CreateSetViewModel() as T
+        }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }

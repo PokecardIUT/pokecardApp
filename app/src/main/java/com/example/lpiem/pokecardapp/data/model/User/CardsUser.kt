@@ -5,8 +5,11 @@ import com.google.gson.annotations.SerializedName
 data class CardsUser(
 
 	@field:SerializedName("imageUrlHiRes")
-	val imageUrlHiRes: String? = null,
+	var imageUrlHiRes: String? = null,
+
+	@field:SerializedName("imageUrl")
+	var imageUrl: String? = null,
 
 	@field:SerializedName("id")
-	val id: String? = null
+	var id: String? = null
 )

@@ -9,6 +9,7 @@ import com.example.lpiem.pokecardapp.data.model.User.User
 import com.example.lpiem.pokecardapp.data.model.Login.ResultCode
 import com.example.lpiem.pokecardapp.data.model.SuccessMessage
 import com.example.lpiem.pokecardapp.data.model.TradeData
+import com.example.lpiem.pokecardapp.data.model.User.SetsUser
 import com.example.lpiem.pokecardapp.data.model.User.UserResponse
 import retrofit2.Call
 import retrofit2.http.*
@@ -61,4 +62,11 @@ interface PokeCardApi {
     fun trade(@Query("access_token") accessToken: String,
               @Field("users") users: List<User>,
               @Field("cards") cards: List<Card>): Call<SuccessMessage<List<TradeData>>>
+              
+    @POST("/api/setUpdate")
+    @FormUrlEncoded
+    fun addSet(@Field("username") username: String,
+               @Field("set") set: String,
+               @Query("access_token") accessToken: String): Call<UserResponse>
+
 }
