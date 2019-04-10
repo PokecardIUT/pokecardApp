@@ -38,4 +38,8 @@ class Navigator(fragmentManager: FragmentManager){
     fun displayMySets(){
         fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, MySetsFragment.newInstance()).commit()
     }
+
+    fun displayCreateSet(){
+        fragmentManager.beginTransaction().replace(R.id.search_card_framelayout, CreateSetFragment.newInstance()).addToBackStack(null).commit()
+    }
 }

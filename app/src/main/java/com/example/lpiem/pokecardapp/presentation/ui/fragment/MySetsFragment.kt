@@ -76,6 +76,9 @@ class MySetsFragment : BaseFragment<MySetsViewModel>(), View.OnClickListener{
         when (v.id) {
             R.id.menu_add_sets -> {
                 Log.d("mlk","set")
+                navigator.displayCreateSet()
+                activity?.title = "Creation de deck"
+
             }
 
             R.id.menu_shop -> {
